@@ -1,0 +1,28 @@
+EESchema-LIBRARY Version 2.3
+#encoding utf-8
+#SamacSys ECAD Model XC6210B502PR-G
+#/2327287/764789/2.50/7/3/Integrated Circuit
+DEF XC6210B502PR-G IC 0 30 Y Y 1 F N
+F0 "IC" 1050 300 50 H V L CNN
+F1 "XC6210B502PR-G" 1050 200 50 H V L CNN
+F2 "XC6210B502PRG" 1050 100 50 H I L CNN
+F3 "https://www.torex.co.jp/file/xc6210/XC6210-j.pdf" 1050 0 50 H I L CNN
+F4 "LDO Voltage Regulators 700mA High Speed LDO Regulator" 1050 -100 50 H I L CNN "Description"
+F5 "1.6" 1050 -200 50 H I L CNN "Height"
+F6 "865-XC6210B502PR-G" 1050 -300 50 H I L CNN "Mouser Part Number"
+F7 "https://www.mouser.co.uk/ProductDetail/Torex-Semiconductor/XC6210B502PR-G?qs=AsjdqWjXhJ8XXo5wZ7cEHQ%3D%3D" 1050 -400 50 H I L CNN "Mouser Price/Stock"
+F8 "Torex" 1050 -500 50 H I L CNN "Manufacturer_Name"
+F9 "XC6210B502PR-G" 1050 -600 50 H I L CNN "Manufacturer_Part_Number"
+DRAW
+X CE 1 0 0 200 R 50 50 0 0 P
+X VSS_1 2 0 -100 200 R 50 50 0 0 P
+X NC 3 0 -200 200 R 50 50 0 0 N
+X VIN 4 0 -300 200 R 50 50 0 0 P
+X VOUT 5 1200 0 200 L 50 50 0 0 P
+X VSS_2 6 1200 -100 200 L 50 50 0 0 P
+X VSS_3 7 1200 -200 200 L 50 50 0 0 P
+P 5 0 1 6 200 100 1000 100 1000 -400 200 -400 200 100 N
+ENDDRAW
+ENDDEF
+#
+#End Library

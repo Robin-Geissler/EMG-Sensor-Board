@@ -1,0 +1,11 @@
+FILE_TYPE = MULTI_PHYS_TABLE;
+
+PART 'XC6210B502PR_G'
+CLASS = IC
+{========================================================================================}
+:"MANUFACTURER_NAME", "MANUFACTURER_PART_NUMBER"= "PART_NUMBER", "JEDEC_TYPE", "PACK_TYPE", "MOUSER_PART_NUMBER", "MOUSER_PRICE/STOCK", "DESCRIPTION", "DATASHEET", "HEIGHT";
+{========================================================================================}
+ "Torex", "XC6210B502PR-G" (!) = "", "XC6210B502PRG", "Other", "865-XC6210B502PR-G", "https://www.mouser.co.uk/ProductDetail/Torex-Semiconductor/XC6210B502PR-G?qs=AsjdqWjXhJ8XXo5wZ7cEHQ%3D%3D", "LDO Voltage Regulators 700mA High Speed LDO Regulator", "https://www.torex.co.jp/file/xc6210/XC6210-j.pdf", "1.6 mm"
+END_PART
+
+END.
