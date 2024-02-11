@@ -1,0 +1,9 @@
+Manufacturer=TDK
+PartNumber=DLF162500LT-5028A1
+PartCategory=Filter
+PackageCategory=Other
+PinCount=4
+Version=3.3
+Released=2019-11-22 12:09:20
+Downloaded=2024-02-09 13:00:23
+3D=Y

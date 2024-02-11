@@ -1,0 +1,18 @@
+.DLF162500LT-5028A1 :1 ;Signal Conditioning LTCC LOW PASS FLTR 2400-2500MHz
+DLF162500LT5028A1
+*STM FL
+*NGS
+*PLB 1="IN" 2="GND_1" 3="OUT" 4="GND_2"
+*MXP 4
+*DFN DLF162500LT-5028A1
+~!Manufacturer_Name (TDK)
+~!Manufacturer_Part_Number (DLF162500LT-5028A1)
+~!Mouser Part Number (810-DLF16250LT5028A1)
+~!Link Mouser Price/Stock (https://www.mouser.co.uk/ProductDetail/TDK/DLF162500LT-5028A1?qs=U%2FZX79kHR%2FlwIbAISCs3qA%3D%3D)
+~!Arrow Part Number (DLF162500LT-5028A1)
+~!Link Arrow Price/Stock (https://www.arrow.com/en/products/dlf162500lt-5028a1/tdk?region=nac)
+~!Link Datasheet (https://product.tdk.com/system/files/dam/doc/product/rf/rf/filter/catalog/rf_lpf_dlf162500lt-5028a1_en.pdf)
+~!Height (0.4mm)
+~!3D_Model (DLF162500LT-5028A1)
+DLF162500LT-5028A1
+1.1!U 2.1!U 3.1!U 4.1!U 

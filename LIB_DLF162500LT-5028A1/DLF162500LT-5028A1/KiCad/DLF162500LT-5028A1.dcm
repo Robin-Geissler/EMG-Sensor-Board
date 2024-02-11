@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP DLF162500LT-5028A1
+D Signal Conditioning LTCC LOW PASS FLTR 2400-2500MHz
+K
+F https://product.tdk.com/system/files/dam/doc/product/rf/rf/filter/catalog/rf_lpf_dlf162500lt-5028a1_en.pdf
+$ENDCMP
+#
+#End Doc Library
