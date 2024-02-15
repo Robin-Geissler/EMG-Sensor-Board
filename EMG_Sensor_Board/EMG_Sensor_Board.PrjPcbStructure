@@ -1,5 +1,12 @@
 Record=TopLevelDocument|FileName=AFE.SchDoc|SheetNumber=4
+Record=SheetSymbol|SourceDocument=AFE.SchDoc|Designator=FL?|SchDesignator=FL?|FileName=Filter.SchDoc|SheetNumber=5|SymbolType=Normal|RawFileName=Filter.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=AFE.SchDoc|Designator=FL?|SchDesignator=FL?|FileName=Filter.SchDoc|SheetNumber=5|SymbolType=Normal|RawFileName=Filter.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=AFE.SchDoc|Designator=FL?|SchDesignator=FL?|FileName=Filter.SchDoc|SheetNumber=5|SymbolType=Normal|RawFileName=Filter.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=AFE.SchDoc|Designator=FL?|SchDesignator=FL?|FileName=Filter.SchDoc|SheetNumber=5|SymbolType=Normal|RawFileName=Filter.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=AFE.SchDoc|Designator=FL?|SchDesignator=FL?|FileName=Filter.SchDoc|SheetNumber=5|SymbolType=Normal|RawFileName=Filter.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=AFE.SchDoc|Designator=FL?|SchDesignator=FL?|FileName=Filter.SchDoc|SheetNumber=5|SymbolType=Normal|RawFileName=Filter.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=AFE.SchDoc|Designator=FL?|SchDesignator=FL?|FileName=Filter.SchDoc|SheetNumber=5|SymbolType=Normal|RawFileName=Filter.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=AFE.SchDoc|Designator=FL?|SchDesignator=FL?|FileName=Filter.SchDoc|SheetNumber=5|SymbolType=Normal|RawFileName=Filter.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
 Record=NoMainPathDocument|SourceDocument=AFE.SchDoc|FileName=EMG_Sensor_Board.SchDoc|SheetNumber=1
 Record=NoMainPathDocument|SourceDocument=AFE.SchDoc|FileName=MCU.SchDoc|SheetNumber=3
 Record=NoMainPathDocument|SourceDocument=AFE.SchDoc|FileName=Power_Supply.SchDoc|SheetNumber=2
-Record=NoMainPathDocument|SourceDocument=AFE.SchDoc|FileName=USB_C.SchDoc|SheetNumber=5
