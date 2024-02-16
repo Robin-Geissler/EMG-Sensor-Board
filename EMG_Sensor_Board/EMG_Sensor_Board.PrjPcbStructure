@@ -1,4 +1,9 @@
-Record=TopLevelDocument|FileName=AFE.SchDoc|SheetNumber=4
+Record=TopLevelDocument|FileName=EMG_Sensor_Board.SchDoc|SheetNumber=1
+Record=SheetSymbol|SourceDocument=EMG_Sensor_Board.SchDoc|Designator=AFE1|SchDesignator=AFE1|FileName=AFE.SchDoc|SheetNumber=4|SymbolType=Normal|RawFileName=AFE.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=EMG_Sensor_Board.SchDoc|Designator=AFE2|SchDesignator=AFE2|FileName=AFE.SchDoc|SheetNumber=4|SymbolType=Normal|RawFileName=AFE.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=EMG_Sensor_Board.SchDoc|Designator=MC|SchDesignator=MC|FileName=MCU.SchDoc|SheetNumber=3|SymbolType=Normal|RawFileName=MCU.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=EMG_Sensor_Board.SchDoc|Designator=PWR|SchDesignator=PWR|FileName=Power_Supply.SchDoc|SheetNumber=2|SymbolType=Normal|RawFileName=Power_Supply.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=EMG_Sensor_Board.SchDoc|Designator=RF|SchDesignator=RF|FileName=RF.SchDoc|SheetNumber=6|SymbolType=Normal|RawFileName=RF.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
 Record=SheetSymbol|SourceDocument=AFE.SchDoc|Designator=FL?|SchDesignator=FL?|FileName=Filter.SchDoc|SheetNumber=5|SymbolType=Normal|RawFileName=Filter.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
 Record=SheetSymbol|SourceDocument=AFE.SchDoc|Designator=FL?|SchDesignator=FL?|FileName=Filter.SchDoc|SheetNumber=5|SymbolType=Normal|RawFileName=Filter.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
 Record=SheetSymbol|SourceDocument=AFE.SchDoc|Designator=FL?|SchDesignator=FL?|FileName=Filter.SchDoc|SheetNumber=5|SymbolType=Normal|RawFileName=Filter.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
@@ -7,6 +12,3 @@ Record=SheetSymbol|SourceDocument=AFE.SchDoc|Designator=FL?|SchDesignator=FL?|Fi
 Record=SheetSymbol|SourceDocument=AFE.SchDoc|Designator=FL?|SchDesignator=FL?|FileName=Filter.SchDoc|SheetNumber=5|SymbolType=Normal|RawFileName=Filter.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
 Record=SheetSymbol|SourceDocument=AFE.SchDoc|Designator=FL?|SchDesignator=FL?|FileName=Filter.SchDoc|SheetNumber=5|SymbolType=Normal|RawFileName=Filter.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
 Record=SheetSymbol|SourceDocument=AFE.SchDoc|Designator=FL?|SchDesignator=FL?|FileName=Filter.SchDoc|SheetNumber=5|SymbolType=Normal|RawFileName=Filter.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
-Record=NoMainPathDocument|SourceDocument=AFE.SchDoc|FileName=EMG_Sensor_Board.SchDoc|SheetNumber=1
-Record=NoMainPathDocument|SourceDocument=AFE.SchDoc|FileName=MCU.SchDoc|SheetNumber=3
-Record=NoMainPathDocument|SourceDocument=AFE.SchDoc|FileName=Power_Supply.SchDoc|SheetNumber=2

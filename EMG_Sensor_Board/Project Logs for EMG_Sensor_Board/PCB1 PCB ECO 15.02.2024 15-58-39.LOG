@@ -1,0 +1,298 @@
+Removed Pin From Net: NetName=NetL5_FL?6_1 Pin=U4_AFE?1-1
+Removed Pin From Net: NetName=NetL4_FL?6_1 Pin=U4_AFE?1-2
+Removed Pin From Net: NetName=NetL5_FL?8_1 Pin=U4_AFE?1-3
+Removed Pin From Net: NetName=NetL4_FL?8_1 Pin=U4_AFE?1-4
+Removed Pin From Net: NetName=NetL5_FL?7_1 Pin=U4_AFE?1-5
+Removed Pin From Net: NetName=NetL4_FL?7_1 Pin=U4_AFE?1-6
+Removed Pin From Net: NetName=NetL5_FL?5_1 Pin=U4_AFE?1-7
+Removed Pin From Net: NetName=NetL4_FL?5_1 Pin=U4_AFE?1-8
+Removed Pin From Net: NetName=NetL5_FL?4_1 Pin=U4_AFE?1-9
+Removed Pin From Net: NetName=NetL4_FL?4_1 Pin=U4_AFE?1-10
+Removed Pin From Net: NetName=NetL5_FL?3_1 Pin=U4_AFE?1-11
+Removed Pin From Net: NetName=NetL4_FL?3_1 Pin=U4_AFE?1-12
+Removed Pin From Net: NetName=NetL5_FL?2_1 Pin=U4_AFE?1-13
+Removed Pin From Net: NetName=NetL4_FL?2_1 Pin=U4_AFE?1-14
+Removed Pin From Net: NetName=NetL5_FL?1_1 Pin=U4_AFE?1-15
+Removed Pin From Net: NetName=NetL4_FL?1_1 Pin=U4_AFE?1-16
+Removed Pin From Net: NetName=GND Pin=U4_AFE?1-25
+Removed Pin From Net: NetName=NetU3_65 Pin=U4_AFE?1-34
+Removed Pin From Net: NetName=NetR5_1 Pin=U4_AFE?1-39
+Removed Pin From Net: NetName=NetU3_63 Pin=U4_AFE?1-40
+Removed Pin From Net: NetName=NetU3_64 Pin=U4_AFE?1-43
+Removed Pin From Net: NetName=NetC27_AFE?1_2 Pin=U4_AFE?1-63
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Remove Pin from Net: Failed to remove Pin
+Removed Member From Class: ClassName=AFE Member=AFE?1
+Removed Member From Class: ClassName=AFE Member=AFE?2
+Change Footprint: Cannot match pads with new footprint in component :J2 Footprint:FP-53261-0371-MFG
+Change Footprint: Footprint Not Found C-1608 [0603]-N
+Change Footprint: Footprint Not Found C-1608 [0603]-N
+Change Footprint: Footprint Not Found C-1608 [0603]-N
+Change Footprint: Footprint Not Found C-1608 [0603]-N
+Change Footprint: Footprint Not Found C-1608 [0603]-N
+Change Footprint: Footprint Not Found C-1608 [0603]-N
+Change Footprint: Footprint Not Found C-1608 [0603]-N
+Change Footprint: Footprint Not Found C-1608 [0603]-N
+Change Footprint: Footprint Not Found C-1608 [0603]-N
+Change Footprint: Footprint Not Found C-1608 [0603]-N
+Change Footprint: Footprint Not Found C-1608 [0603]-N
+Change Footprint: Footprint Not Found C-1608 [0603]-N
+Change Footprint: Footprint Not Found C-1608 [0603]-N
+Change Footprint: Footprint Not Found C-1608 [0603]-N
+Change Footprint: Footprint Not Found SOT-23/6
+Change Footprint: Footprint Not Found C-1608 [0603]-N
+Change Footprint: Footprint Not Found R-1608 [0603]-N
+Change Component Designator: OldDesignator=C27_AFE?1 NewDesignator=C27_AFE1
+Change Component Designator: OldDesignator=C27_AFE?2 NewDesignator=C27_AFE2
+Change Component Designator: OldDesignator=C28_AFE?1 NewDesignator=C28_AFE1
+Change Component Designator: OldDesignator=C28_AFE?2 NewDesignator=C28_AFE2
+Change Component Designator: OldDesignator=C29_AFE?1 NewDesignator=C29_AFE1
+Change Component Designator: OldDesignator=C29_AFE?2 NewDesignator=C29_AFE2
+Change Component Designator: OldDesignator=C30_AFE?1 NewDesignator=C30_AFE1
+Change Component Designator: OldDesignator=C30_AFE?2 NewDesignator=C30_AFE2
+Change Component Designator: OldDesignator=C31_AFE?1 NewDesignator=C31_AFE1
+Change Component Designator: OldDesignator=C31_AFE?2 NewDesignator=C31_AFE2
+Change Component Designator: OldDesignator=C32_AFE?1 NewDesignator=C32_AFE1
+Change Component Designator: OldDesignator=C32_AFE?2 NewDesignator=C32_AFE2
+Change Component Designator: OldDesignator=C33_AFE?1 NewDesignator=C33_AFE1
+Change Component Designator: OldDesignator=C33_AFE?2 NewDesignator=C33_AFE2
+Change Component Designator: OldDesignator=C34_AFE?1 NewDesignator=C34_AFE1
+Change Component Designator: OldDesignator=C34_AFE?2 NewDesignator=C34_AFE2
+Change Component Designator: OldDesignator=C35_AFE?1 NewDesignator=C35_AFE1
+Change Component Designator: OldDesignator=C35_AFE?2 NewDesignator=C35_AFE2
+Change Component Designator: OldDesignator=C36_AFE?1 NewDesignator=C36_AFE1
+Change Component Designator: OldDesignator=C36_AFE?2 NewDesignator=C36_AFE2
+Change Component Designator: OldDesignator=C37_AFE?1 NewDesignator=C37_AFE1
+Change Component Designator: OldDesignator=C37_AFE?2 NewDesignator=C37_AFE2
+Change Component Designator: OldDesignator=C38_AFE?1 NewDesignator=C38_AFE1
+Change Component Designator: OldDesignator=C38_AFE?2 NewDesignator=C38_AFE2
+Change Component Designator: OldDesignator=C39_AFE?1 NewDesignator=C39_AFE1
+Change Component Designator: OldDesignator=C39_AFE?2 NewDesignator=C39_AFE2
+Change Component Designator: OldDesignator=C40_AFE?1 NewDesignator=C40_AFE1
+Change Component Designator: OldDesignator=C40_AFE?2 NewDesignator=C40_AFE2
+Change Component Designator: OldDesignator=C41_AFE?1 NewDesignator=C41_AFE1
+Change Component Designator: OldDesignator=C41_AFE?2 NewDesignator=C41_AFE2
+Change Component Designator: OldDesignator=C42_AFE?1 NewDesignator=C42_AFE1
+Change Component Designator: OldDesignator=C42_AFE?2 NewDesignator=C42_AFE2
+Change Component Designator: OldDesignator=P3_AFE?1 NewDesignator=P3_AFE1
+Change Component Designator: OldDesignator=P3_AFE?2 NewDesignator=P3_AFE2
+Change Component Designator: OldDesignator=P4_AFE?1 NewDesignator=P4_AFE1
+Change Component Designator: OldDesignator=P4_AFE?2 NewDesignator=P4_AFE2
+Change Component Designator: OldDesignator=R8_AFE?1 NewDesignator=R8_AFE1
+Change Component Designator: OldDesignator=R8_AFE?2 NewDesignator=R8_AFE2
+Change Component Designator: OldDesignator=R9_AFE?1 NewDesignator=R9_AFE1
+Change Component Designator: OldDesignator=R9_AFE?2 NewDesignator=R9_AFE2
+Change Component Designator: OldDesignator=U4_AFE?1 NewDesignator=U4_AFE1
+Change Component Designator: OldDesignator=U4_AFE?2 NewDesignator=U4_AFE2
+Add Component: Footprint Not Found SOD-123-D
+Add Component: Footprint Not Found C-1608 [0603]-N
+Add Component: Footprint Not Found SOT-23-3-PMOS
+Add Component: Footprint Not Found SOT95P280X145-5N
+Add Component: Footprint Not Found Micro USB B
+Add Pin To Net: Unknown Pin: Pin D1-A
+Add Pin To Net: Unknown Pin: Pin D1-K
+Add Pin To Net: Unknown Pin: Pin D2-1
+Add Pin To Net: Unknown Pin: Pin D2-2
+Added Pin To Net: NetName=GND Pin=J2-3
+Added Pin To Net: NetName=GND Pin=J2-3
+Added Pin To Net: NetName=GND Pin=J2-3
+Add Pin To Net: Unknown Pin: Pin J2-5
+Add Pin To Net: Unknown Pin: Pin T1-1
+Add Pin To Net: Unknown Pin: Pin T1-2
+Add Pin To Net: Unknown Pin: Pin T1-3
+Add Pin To Net: Unknown Pin: Pin U2-1
+Add Pin To Net: Unknown Pin: Pin U2-2
+Add Pin To Net: Unknown Pin: Pin U2-3
+Add Pin To Net: Unknown Pin: Pin U2-4
+Add Pin To Net: Unknown Pin: Pin U2-5
+Added Pin To Net: NetName=NetL5_FL?6_1 Pin=U4_AFE1-1
+Added Pin To Net: NetName=NetL4_FL?6_1 Pin=U4_AFE1-2
+Added Pin To Net: NetName=NetL5_FL?8_1 Pin=U4_AFE1-3
+Added Pin To Net: NetName=NetL4_FL?8_1 Pin=U4_AFE1-4
+Added Pin To Net: NetName=NetL5_FL?7_1 Pin=U4_AFE1-5
+Added Pin To Net: NetName=NetL4_FL?7_1 Pin=U4_AFE1-6
+Added Pin To Net: NetName=NetL5_FL?5_1 Pin=U4_AFE1-7
+Added Pin To Net: NetName=NetL4_FL?5_1 Pin=U4_AFE1-8
+Added Pin To Net: NetName=NetL5_FL?4_1 Pin=U4_AFE1-9
+Added Pin To Net: NetName=NetL4_FL?4_1 Pin=U4_AFE1-10
+Added Pin To Net: NetName=NetL5_FL?3_1 Pin=U4_AFE1-11
+Added Pin To Net: NetName=NetL4_FL?3_1 Pin=U4_AFE1-12
+Added Pin To Net: NetName=NetL5_FL?2_1 Pin=U4_AFE1-13
+Added Pin To Net: NetName=NetL4_FL?2_1 Pin=U4_AFE1-14
+Added Pin To Net: NetName=NetL5_FL?1_1 Pin=U4_AFE1-15
+Added Pin To Net: NetName=NetL4_FL?1_1 Pin=U4_AFE1-16
+Added Pin To Net: NetName=GND Pin=U4_AFE1-25
+Added Pin To Net: NetName=NetU3_65 Pin=U4_AFE1-34
+Added Pin To Net: NetName=NetR5_1 Pin=U4_AFE1-39
+Added Pin To Net: NetName=NetU3_63 Pin=U4_AFE1-40
+Added Pin To Net: NetName=NetU3_64 Pin=U4_AFE1-43
+Added Pin To Net: NetName=NetC27_AFE?1_2 Pin=U4_AFE1-63
+Added Pin To Net: NetName=NetL5_FL?14_1 Pin=U4_AFE2-1
+Added Pin To Net: NetName=NetL4_FL?14_1 Pin=U4_AFE2-2
+Added Pin To Net: NetName=NetL5_FL?16_1 Pin=U4_AFE2-3
+Added Pin To Net: NetName=NetL4_FL?16_1 Pin=U4_AFE2-4
+Added Pin To Net: NetName=NetL5_FL?15_1 Pin=U4_AFE2-5
+Added Pin To Net: NetName=NetL4_FL?15_1 Pin=U4_AFE2-6
+Added Pin To Net: NetName=NetL5_FL?13_1 Pin=U4_AFE2-7
+Added Pin To Net: NetName=NetL4_FL?13_1 Pin=U4_AFE2-8
+Added Pin To Net: NetName=NetL5_FL?12_1 Pin=U4_AFE2-9
+Added Pin To Net: NetName=NetL4_FL?12_1 Pin=U4_AFE2-10
+Added Pin To Net: NetName=NetL5_FL?11_1 Pin=U4_AFE2-11
+Added Pin To Net: NetName=NetL4_FL?11_1 Pin=U4_AFE2-12
+Added Pin To Net: NetName=NetL5_FL?10_1 Pin=U4_AFE2-13
+Added Pin To Net: NetName=NetL4_FL?10_1 Pin=U4_AFE2-14
+Added Pin To Net: NetName=NetL5_FL?9_1 Pin=U4_AFE2-15
+Added Pin To Net: NetName=NetL4_FL?9_1 Pin=U4_AFE2-16
+Added Pin To Net: NetName=GND Pin=U4_AFE2-25
+Added Pin To Net: NetName=NetU3_65 Pin=U4_AFE2-34
+Added Pin To Net: NetName=NetR4_1 Pin=U4_AFE2-39
+Added Pin To Net: NetName=NetU3_63 Pin=U4_AFE2-40
+Added Pin To Net: NetName=NetU3_64 Pin=U4_AFE2-43
+Added Pin To Net: NetName=NetC27_AFE?2_2 Pin=U4_AFE2-63
+Add Pin To Net: Unknown Pin: Pin X1-0
+Add Pin To Net: Unknown Pin: Pin X1-1
+Add Pin To Net: Unknown Pin: Pin X1-2
+Add Pin To Net: Unknown Pin: Pin X1-3
+Add Pin To Net: Unknown Pin: Pin X1-5
+Change Net Name : Old Net Name=NetC27_AFE?1_2 New Net Name=NetC27_AFE1_2
+Change Net Name : Old Net Name=NetC27_AFE?2_2 New Net Name=NetC27_AFE2_2
+Added Pin To Net: NetName=NetC27_AFE1_1 Pin=C27_AFE1-1
+Added Pin To Net: NetName=NetC27_AFE1_1 Pin=R9_AFE1-2
+Added Pin To Net: NetName=NetC27_AFE1_1 Pin=U4_AFE1-61
+Added Net: Name=NetC27_AFE1_1
+Added Pin To Net: NetName=NetC27_AFE2_1 Pin=C27_AFE2-1
+Added Pin To Net: NetName=NetC27_AFE2_1 Pin=R9_AFE2-2
+Added Pin To Net: NetName=NetC27_AFE2_1 Pin=U4_AFE2-61
+Added Net: Name=NetC27_AFE2_1
+Added Pin To Net: NetName=NetC28_AFE1_1 Pin=C28_AFE1-1
+Added Pin To Net: NetName=NetC28_AFE1_1 Pin=C29_AFE1-2
+Added Pin To Net: NetName=NetC28_AFE1_1 Pin=U4_AFE1-24
+Added Net: Name=NetC28_AFE1_1
+Added Pin To Net: NetName=NetC28_AFE2_1 Pin=C28_AFE2-1
+Added Pin To Net: NetName=NetC28_AFE2_1 Pin=C29_AFE2-2
+Added Pin To Net: NetName=NetC28_AFE2_1 Pin=U4_AFE2-24
+Added Net: Name=NetC28_AFE2_1
+Added Pin To Net: NetName=NetC30_AFE1_1 Pin=C30_AFE1-1
+Added Pin To Net: NetName=NetC30_AFE1_1 Pin=U4_AFE1-28
+Added Net: Name=NetC30_AFE1_1
+Added Pin To Net: NetName=NetC30_AFE2_1 Pin=C30_AFE2-1
+Added Pin To Net: NetName=NetC30_AFE2_1 Pin=U4_AFE2-28
+Added Net: Name=NetC30_AFE2_1
+Added Pin To Net: NetName=NetC31_AFE1_1 Pin=C31_AFE1-1
+Added Pin To Net: NetName=NetC31_AFE1_1 Pin=U4_AFE1-30
+Added Net: Name=NetC31_AFE1_1
+Added Pin To Net: NetName=NetC31_AFE2_1 Pin=C31_AFE2-1
+Added Pin To Net: NetName=NetC31_AFE2_1 Pin=U4_AFE2-30
+Added Net: Name=NetC31_AFE2_1
+Added Pin To Net: NetName=NetC32_AFE1_1 Pin=C32_AFE1-1
+Added Pin To Net: NetName=NetC32_AFE1_1 Pin=C33_AFE1-1
+Added Pin To Net: NetName=NetC32_AFE1_1 Pin=U4_AFE1-55
+Added Net: Name=NetC32_AFE1_1
+Added Pin To Net: NetName=NetC32_AFE2_1 Pin=C32_AFE2-1
+Added Pin To Net: NetName=NetC32_AFE2_1 Pin=C33_AFE2-1
+Added Pin To Net: NetName=NetC32_AFE2_1 Pin=U4_AFE2-55
+Added Net: Name=NetC32_AFE2_1
+Added Pin To Net: NetName=NetC34_AFE1_1 Pin=C34_AFE1-1
+Added Pin To Net: NetName=NetC34_AFE1_1 Pin=U4_AFE1-26
+Added Net: Name=NetC34_AFE1_1
+Added Pin To Net: NetName=NetC34_AFE2_1 Pin=C34_AFE2-1
+Added Pin To Net: NetName=NetC34_AFE2_1 Pin=U4_AFE2-26
+Added Net: Name=NetC34_AFE2_1
+Added Pin To Net: NetName=NetP3_AFE1_3 Pin=P3_AFE1-3
+Added Pin To Net: NetName=NetP3_AFE1_3 Pin=U4_AFE1-62
+Added Net: Name=NetP3_AFE1_3
+Added Pin To Net: NetName=NetP3_AFE2_3 Pin=P3_AFE2-3
+Added Pin To Net: NetName=NetP3_AFE2_3 Pin=U4_AFE2-62
+Added Net: Name=NetP3_AFE2_3
+Added Pin To Net: NetName=NetR8_AFE1_2 Pin=R8_AFE1-2
+Added Pin To Net: NetName=NetR8_AFE1_2 Pin=U4_AFE1-38
+Added Net: Name=NetR8_AFE1_2
+Added Pin To Net: NetName=NetR8_AFE2_2 Pin=R8_AFE2-2
+Added Pin To Net: NetName=NetR8_AFE2_2 Pin=U4_AFE2-38
+Added Net: Name=NetR8_AFE2_2
+Added Pin To Net: NetName=NetU4_AFE1_35 Pin=U4_AFE1-35
+Added Net: Name=NetU4_AFE1_35
+Added Pin To Net: NetName=NetU4_AFE1_36 Pin=U4_AFE1-36
+Added Net: Name=NetU4_AFE1_36
+Added Pin To Net: NetName=NetU4_AFE1_37 Pin=U4_AFE1-37
+Added Net: Name=NetU4_AFE1_37
+Added Pin To Net: NetName=NetU4_AFE1_42 Pin=U4_AFE1-42
+Added Net: Name=NetU4_AFE1_42
+Added Pin To Net: NetName=NetU4_AFE1_44 Pin=U4_AFE1-44
+Added Net: Name=NetU4_AFE1_44
+Added Pin To Net: NetName=NetU4_AFE1_45 Pin=U4_AFE1-45
+Added Net: Name=NetU4_AFE1_45
+Added Pin To Net: NetName=NetU4_AFE1_46 Pin=U4_AFE1-46
+Added Net: Name=NetU4_AFE1_46
+Added Pin To Net: NetName=NetU4_AFE1_47 Pin=U4_AFE1-47
+Added Net: Name=NetU4_AFE1_47
+Added Pin To Net: NetName=NetU4_AFE1_52 Pin=U4_AFE1-52
+Added Net: Name=NetU4_AFE1_52
+Added Pin To Net: NetName=NetU4_AFE2_35 Pin=U4_AFE2-35
+Added Net: Name=NetU4_AFE2_35
+Added Pin To Net: NetName=NetU4_AFE2_36 Pin=U4_AFE2-36
+Added Net: Name=NetU4_AFE2_36
+Added Pin To Net: NetName=NetU4_AFE2_37 Pin=U4_AFE2-37
+Added Net: Name=NetU4_AFE2_37
+Added Pin To Net: NetName=NetU4_AFE2_42 Pin=U4_AFE2-42
+Added Net: Name=NetU4_AFE2_42
+Added Pin To Net: NetName=NetU4_AFE2_44 Pin=U4_AFE2-44
+Added Net: Name=NetU4_AFE2_44
+Added Pin To Net: NetName=NetU4_AFE2_45 Pin=U4_AFE2-45
+Added Net: Name=NetU4_AFE2_45
+Added Pin To Net: NetName=NetU4_AFE2_46 Pin=U4_AFE2-46
+Added Net: Name=NetU4_AFE2_46
+Added Pin To Net: NetName=NetU4_AFE2_47 Pin=U4_AFE2-47
+Added Net: Name=NetU4_AFE2_47
+Added Pin To Net: NetName=NetU4_AFE2_52 Pin=U4_AFE2-52
+Added Net: Name=NetU4_AFE2_52
+Change Class Name : Old Net Name=AFE?1 New Net Name=AFE1
+Change Class Name : Old Net Name=AFE?2 New Net Name=AFE2
+Change Class Name : Old Net Name=MC? New Net Name=MC
+Change Class Name : Old Net Name=PW? New Net Name=PWR
+Change Class Name : Old Net Name=RF? New Net Name=RF
+Added Member To Class: ClassName=MC Member=Component C14 100nF
+Added Member To Class: ClassName=AFE1 Member=Component C41_AFE1 (C41) 1uF
+Added Member To Class: ClassName=FL?2 Member=Component C43_FL?2 (C43) 470pF
+Added Member To Class: ClassName=FL?4 Member=Component C43_FL?4 (C43) 470pF
+Added Member To Class: ClassName=FL?12 Member=Component C43_FL?12 (C43) 470pF
+Added Member To Class: ClassName=FL?15 Member=Component C43_FL?15 (C43) 470pF
+Add Class Member: Failed to add class member : Component D1 PMEG3015EH, 115
+Add Class Member: Failed to add class member : Component D2 TVS 5V
+Added Member To Class: ClassName=FL?2 Member=Component L4_FL?2 (L4) 15nF
+Added Member To Class: ClassName=FL?3 Member=Component L4_FL?3 (L4) 15nF
+Added Member To Class: ClassName=FL?11 Member=Component L4_FL?11 (L4) 15nF
+Added Member To Class: ClassName=FL?13 Member=Component L4_FL?13 (L4) 15nF
+Added Member To Class: ClassName=FL?16 Member=Component L5_FL?16 (L5) 15nF
+Added Member To Class: ClassName=RF Member=Component L7 2 nH
+Added Member To Class: ClassName=PWR Member=Component P1 61300211121
+Added Member To Class: ClassName=AFE1 Member=Component P3_AFE1 (P3) 61300311121
+Added Member To Class: ClassName=AFE2 Member=Component P3_AFE2 (P3) 61300311121
+Added Member To Class: ClassName=AFE2 Member=Component R8_AFE2 (R8) 100k
+Add Class Member: Failed to add class member : Component T1 DMP1045U
+Add Class Member: Failed to add class member : Component U2 MCP73832
+Add Class Member: Failed to add class member : Component X1 MICRO USB B
+Added Member To Class: ClassName=AFE Member=AFE1 (AFE.SchDoc)
+Added Member To Class: ClassName=AFE Member=AFE2 (AFE.SchDoc)
+Change Room Name: Old Name=RF? New Name=RF
+Change Room Scope: Old Scope=InComponentClass('RF?') New Scope=InComponentClass('RF')
