@@ -1,0 +1,76 @@
+Change Component Footprint: Designator=P5 Old Footprint=61300211121 New Footprint=61300211121
+Change Component Footprint: Designator=P6 Old Footprint=61300211121 New Footprint=61300211121
+Change Component Footprint: Designator=P7_AFE1 Old Footprint=61300311121 New Footprint=61300311121
+Change Component Footprint: Designator=P7_AFE2 Old Footprint=61300311121 New Footprint=61300311121
+Change Component Footprint: Designator=P8_AFE1 Old Footprint=61300311121 New Footprint=61300311121
+Change Component Footprint: Designator=P8_AFE2 Old Footprint=61300311121 New Footprint=61300311121
+Change Component Footprint: Designator=P2 Old Footprint=61300421121 New Footprint=61300421121
+Change Component Footprint: Designator=P3 Old Footprint=61300421121 New Footprint=61300421121
+Change Component Footprint: Designator=P4 Old Footprint=61300421121 New Footprint=61300421121
+Change Component Footprint: Designator=P1 Old Footprint=61300621121 New Footprint=61300621121
+Change Component Footprint: Designator=AE1 Old Footprint=74889102450 New Footprint=74889102450
+Change Component Footprint: Designator=D3 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D4 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D5 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D6 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D7 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D8 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D9 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D10 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D11 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D12 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Added Component: Designator=J3(SJ3502SMTTR)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = "SJ-3502-SMT-TR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = "https://www.arrow.com/en/products/sj-3502-smt-tr/cui-devices"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "https://www.cuidevices.com/product/resource/sj-3502-smt-tr.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Geometry.Height"; Value = "4.6mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "CUI Devices"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "SJ-3502-SMT-TR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "490-SJ-3502-SMT-TR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/CUI-Devices/SJ-3502-SMT-TR?qs=WyjlAZoYn53BnW6I7ND97Q%3D%3D"; VariantName = "[No Variations]"
+Added Component: Designator=P9(61300311121)
+Add component (AddParameter): Name = "Color"; Value = "Black"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Connector Type"; Value = "Male Pin"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Contact Material"; Value = "Copper"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Contact Mating Length"; Value = "5.9944mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Contact Plating"; Value = "Gold"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Contact Resistance"; Value = "20mO"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Current Rating"; Value = "3A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Gender"; Value = "Male"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "8.94mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Lead Free"; Value = "Lead Free"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Lead Pitch"; Value = "2.54mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Max Operating Temperature"; Value = "105°C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Min Operating Temperature"; Value = "-40°C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mount"; Value = "Through Hole"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "NexarPartId"; Value = "32855521"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Number of Contacts"; Value = "3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Number of Pins"; Value = "3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Number of Positions"; Value = "3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Number of Rows"; Value = "1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Operating Supply Voltage"; Value = "250V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Orientation"; Value = "Vertical"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Packaging"; Value = "Bulk"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Pitch"; Value = "2.54mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "REACH SVHC"; Value = "Unknown"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RoHS"; Value = "Compliant"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Termination"; Value = "Solder"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage Rating"; Value = "250V"; VariantName = "[No Variations]"
+Add Pin To Net: Unknown Pin: Pin D1-1
+Add Pin To Net: Unknown Pin: Pin D1-2
+Added Pin To Net: NetName=BIAS_OUT_1 Pin=P8_AFE1-1
+Added Pin To Net: NetName=BIAS_OUT_1 Pin=P9-1
+Added Net: Name=BIAS_OUT_1
+Added Pin To Net: NetName=BIAS_OUT_2 Pin=P8_AFE2-1
+Added Pin To Net: NetName=BIAS_OUT_2 Pin=P9-3
+Added Net: Name=BIAS_OUT_2
+Added Pin To Net: NetName=NetJ3_2 Pin=J3-2
+Added Pin To Net: NetName=NetJ3_2 Pin=J3-3
+Added Pin To Net: NetName=NetJ3_2 Pin=J3-A1
+Added Pin To Net: NetName=NetJ3_2 Pin=J3-B1
+Added Pin To Net: NetName=NetJ3_2 Pin=J3-C1
+Added Pin To Net: NetName=NetJ3_2 Pin=J3-D1
+Added Pin To Net: NetName=NetJ3_2 Pin=P9-2
+Added Net: Name=NetJ3_2
+Added Member To Class: ClassName=EMG_Sensor_Board Member=Component J3 SJ-3502-SMT-TR
+Added Member To Class: ClassName=EMG_Sensor_Board Member=Component P9 61300311121

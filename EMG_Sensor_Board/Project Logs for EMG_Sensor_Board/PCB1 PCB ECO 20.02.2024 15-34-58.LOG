@@ -1,0 +1,233 @@
+Removed Member From Class: ClassName=EMG_Sensor_Board Member=C4
+Removed Member From Class: ClassName=PWR Member=C15
+Removed Member From Class: ClassName=PWR Member=C16
+Removed Member From Class: ClassName=PWR Member=C20
+Removed Member From Class: ClassName=EMG_Sensor_Board Member=P5
+Removed Member From Class: ClassName=EMG_Sensor_Board Member=P6
+Removed Member From Class: ClassName=PWR Member=R14
+Removed Member From Class: ClassName=PWR Member=R15
+Removed Member From Class: ClassName=Filter Member=FL?1
+Removed Member From Class: ClassName=Filter Member=FL?2
+Removed Member From Class: ClassName=Filter Member=FL?3
+Removed Member From Class: ClassName=Filter Member=FL?4
+Removed Member From Class: ClassName=Filter Member=FL?5
+Removed Member From Class: ClassName=Filter Member=FL?6
+Removed Member From Class: ClassName=Filter Member=FL?7
+Removed Member From Class: ClassName=Filter Member=FL?8
+Removed Member From Class: ClassName=Filter Member=FL?9
+Removed Member From Class: ClassName=Filter Member=FL?10
+Removed Member From Class: ClassName=Filter Member=FL?11
+Removed Member From Class: ClassName=Filter Member=FL?12
+Removed Member From Class: ClassName=Filter Member=FL?13
+Removed Member From Class: ClassName=Filter Member=FL?14
+Removed Member From Class: ClassName=Filter Member=FL?15
+Removed Member From Class: ClassName=Filter Member=FL?16
+Change Component Footprint: Designator=P7_AFE1 Old Footprint=61300311121 New Footprint=61300311121
+Change Component Footprint: Designator=P7_AFE2 Old Footprint=61300311121 New Footprint=61300311121
+Change Component Footprint: Designator=P2 Old Footprint=61300421121 New Footprint=61300421121
+Change Component Footprint: Designator=P3 Old Footprint=61300421121 New Footprint=61300421121
+Change Component Footprint: Designator=P4 Old Footprint=61300421121 New Footprint=61300421121
+Change Component Footprint: Designator=P1 Old Footprint=61300621121 New Footprint=61300621121
+Change Footprint: Cannot match pads with new footprint in component :J2 Footprint:FP-53261-0371-MFG
+Change Component Footprint: Designator=D3 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D4 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D5 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D6 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D7 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D8 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D9 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D10 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D11 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D12 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Designator: OldDesignator=C46_FL?1 NewDesignator=C46_FL11
+Change Component Designator: OldDesignator=C46_FL?2 NewDesignator=C46_FL21
+Change Component Designator: OldDesignator=C46_FL?3 NewDesignator=C46_FL31
+Change Component Designator: OldDesignator=C46_FL?4 NewDesignator=C46_FL41
+Change Component Designator: OldDesignator=C46_FL?5 NewDesignator=C46_FL51
+Change Component Designator: OldDesignator=C46_FL?6 NewDesignator=C46_FL81
+Change Component Designator: OldDesignator=C46_FL?7 NewDesignator=C46_FL61
+Change Component Designator: OldDesignator=C46_FL?8 NewDesignator=C46_FL71
+Change Component Designator: OldDesignator=C46_FL?9 NewDesignator=C46_FL12
+Change Component Designator: OldDesignator=C46_FL?10 NewDesignator=C46_FL22
+Change Component Designator: OldDesignator=C46_FL?11 NewDesignator=C46_FL32
+Change Component Designator: OldDesignator=C46_FL?12 NewDesignator=C46_FL42
+Change Component Designator: OldDesignator=C46_FL?13 NewDesignator=C46_FL52
+Change Component Designator: OldDesignator=C46_FL?14 NewDesignator=C46_FL82
+Change Component Designator: OldDesignator=C46_FL?15 NewDesignator=C46_FL62
+Change Component Designator: OldDesignator=C46_FL?16 NewDesignator=C46_FL72
+Change Component Designator: OldDesignator=C47_FL?1 NewDesignator=C47_FL11
+Change Component Designator: OldDesignator=C47_FL?2 NewDesignator=C47_FL21
+Change Component Designator: OldDesignator=C47_FL?3 NewDesignator=C47_FL31
+Change Component Designator: OldDesignator=C47_FL?4 NewDesignator=C47_FL41
+Change Component Designator: OldDesignator=C47_FL?5 NewDesignator=C47_FL51
+Change Component Designator: OldDesignator=C47_FL?6 NewDesignator=C47_FL81
+Change Component Designator: OldDesignator=C47_FL?7 NewDesignator=C47_FL61
+Change Component Designator: OldDesignator=C47_FL?8 NewDesignator=C47_FL71
+Change Component Designator: OldDesignator=C47_FL?9 NewDesignator=C47_FL12
+Change Component Designator: OldDesignator=C47_FL?10 NewDesignator=C47_FL22
+Change Component Designator: OldDesignator=C47_FL?11 NewDesignator=C47_FL32
+Change Component Designator: OldDesignator=C47_FL?12 NewDesignator=C47_FL42
+Change Component Designator: OldDesignator=C47_FL?13 NewDesignator=C47_FL52
+Change Component Designator: OldDesignator=C47_FL?14 NewDesignator=C47_FL82
+Change Component Designator: OldDesignator=C47_FL?15 NewDesignator=C47_FL62
+Change Component Designator: OldDesignator=C47_FL?16 NewDesignator=C47_FL72
+Change Component Designator: OldDesignator=R21_FL?1 NewDesignator=R21_FL11
+Change Component Designator: OldDesignator=R21_FL?2 NewDesignator=R21_FL21
+Change Component Designator: OldDesignator=R21_FL?3 NewDesignator=R21_FL31
+Change Component Designator: OldDesignator=R21_FL?4 NewDesignator=R21_FL41
+Change Component Designator: OldDesignator=R21_FL?5 NewDesignator=R21_FL51
+Change Component Designator: OldDesignator=R21_FL?6 NewDesignator=R21_FL81
+Change Component Designator: OldDesignator=R21_FL?7 NewDesignator=R21_FL61
+Change Component Designator: OldDesignator=R21_FL?8 NewDesignator=R21_FL71
+Change Component Designator: OldDesignator=R21_FL?9 NewDesignator=R21_FL12
+Change Component Designator: OldDesignator=R21_FL?10 NewDesignator=R21_FL22
+Change Component Designator: OldDesignator=R21_FL?11 NewDesignator=R21_FL32
+Change Component Designator: OldDesignator=R21_FL?12 NewDesignator=R21_FL42
+Change Component Designator: OldDesignator=R21_FL?13 NewDesignator=R21_FL52
+Change Component Designator: OldDesignator=R21_FL?14 NewDesignator=R21_FL82
+Change Component Designator: OldDesignator=R21_FL?15 NewDesignator=R21_FL62
+Change Component Designator: OldDesignator=R21_FL?16 NewDesignator=R21_FL72
+Change Component Designator: OldDesignator=R22_FL?1 NewDesignator=R22_FL11
+Change Component Designator: OldDesignator=R22_FL?2 NewDesignator=R22_FL21
+Change Component Designator: OldDesignator=R22_FL?3 NewDesignator=R22_FL31
+Change Component Designator: OldDesignator=R22_FL?4 NewDesignator=R22_FL41
+Change Component Designator: OldDesignator=R22_FL?5 NewDesignator=R22_FL51
+Change Component Designator: OldDesignator=R22_FL?6 NewDesignator=R22_FL81
+Change Component Designator: OldDesignator=R22_FL?7 NewDesignator=R22_FL61
+Change Component Designator: OldDesignator=R22_FL?8 NewDesignator=R22_FL71
+Change Component Designator: OldDesignator=R22_FL?9 NewDesignator=R22_FL12
+Change Component Designator: OldDesignator=R22_FL?10 NewDesignator=R22_FL22
+Change Component Designator: OldDesignator=R22_FL?11 NewDesignator=R22_FL32
+Change Component Designator: OldDesignator=R22_FL?12 NewDesignator=R22_FL42
+Change Component Designator: OldDesignator=R22_FL?13 NewDesignator=R22_FL52
+Change Component Designator: OldDesignator=R22_FL?14 NewDesignator=R22_FL82
+Change Component Designator: OldDesignator=R22_FL?15 NewDesignator=R22_FL62
+Change Component Designator: OldDesignator=R22_FL?16 NewDesignator=R22_FL72
+Add Pin To Net: Unknown Pin: Pin D1-1
+Add Pin To Net: Unknown Pin: Pin D1-2
+Add Pin To Net: Unknown Pin: Pin J2-5
+Change Net Name : Old Net Name=NetR21_FL?1_1 New Net Name=NetR21_FL11_1
+Change Net Name : Old Net Name=NetR21_FL?2_1 New Net Name=NetR21_FL21_1
+Change Net Name : Old Net Name=NetR21_FL?3_1 New Net Name=NetR21_FL31_1
+Change Net Name : Old Net Name=NetR21_FL?4_1 New Net Name=NetR21_FL41_1
+Change Net Name : Old Net Name=NetR21_FL?5_1 New Net Name=NetR21_FL51_1
+Change Net Name : Old Net Name=NetR21_FL?6_1 New Net Name=NetR21_FL81_1
+Change Net Name : Old Net Name=NetR21_FL?7_1 New Net Name=NetR21_FL61_1
+Change Net Name : Old Net Name=NetR21_FL?8_1 New Net Name=NetR21_FL71_1
+Change Net Name : Old Net Name=NetR21_FL?9_1 New Net Name=NetR21_FL12_1
+Change Net Name : Old Net Name=NetR21_FL?10_1 New Net Name=NetR21_FL22_1
+Change Net Name : Old Net Name=NetR21_FL?11_1 New Net Name=NetR21_FL32_1
+Change Net Name : Old Net Name=NetR21_FL?12_1 New Net Name=NetR21_FL42_1
+Change Net Name : Old Net Name=NetR21_FL?13_1 New Net Name=NetR21_FL52_1
+Change Net Name : Old Net Name=NetR21_FL?14_1 New Net Name=NetR21_FL82_1
+Change Net Name : Old Net Name=NetR21_FL?15_1 New Net Name=NetR21_FL62_1
+Change Net Name : Old Net Name=NetR21_FL?16_1 New Net Name=NetR21_FL72_1
+Change Net Name : Old Net Name=NetR22_FL?1_1 New Net Name=NetR22_FL11_1
+Change Net Name : Old Net Name=NetR22_FL?2_1 New Net Name=NetR22_FL21_1
+Change Net Name : Old Net Name=NetR22_FL?3_1 New Net Name=NetR22_FL31_1
+Change Net Name : Old Net Name=NetR22_FL?4_1 New Net Name=NetR22_FL41_1
+Change Net Name : Old Net Name=NetR22_FL?5_1 New Net Name=NetR22_FL51_1
+Change Net Name : Old Net Name=NetR22_FL?6_1 New Net Name=NetR22_FL81_1
+Change Net Name : Old Net Name=NetR22_FL?7_1 New Net Name=NetR22_FL61_1
+Change Net Name : Old Net Name=NetR22_FL?8_1 New Net Name=NetR22_FL71_1
+Change Net Name : Old Net Name=NetR22_FL?9_1 New Net Name=NetR22_FL12_1
+Change Net Name : Old Net Name=NetR22_FL?10_1 New Net Name=NetR22_FL22_1
+Change Net Name : Old Net Name=NetR22_FL?11_1 New Net Name=NetR22_FL32_1
+Change Net Name : Old Net Name=NetR22_FL?12_1 New Net Name=NetR22_FL42_1
+Change Net Name : Old Net Name=NetR22_FL?13_1 New Net Name=NetR22_FL52_1
+Change Net Name : Old Net Name=NetR22_FL?14_1 New Net Name=NetR22_FL82_1
+Change Net Name : Old Net Name=NetR22_FL?15_1 New Net Name=NetR22_FL62_1
+Change Net Name : Old Net Name=NetR22_FL?16_1 New Net Name=NetR22_FL72_1
+Change Class Name : Old Net Name=FL?1 New Net Name=FL11
+Change Class Name : Old Net Name=FL?2 New Net Name=FL21
+Change Class Name : Old Net Name=FL?3 New Net Name=FL31
+Change Class Name : Old Net Name=FL?4 New Net Name=FL41
+Change Class Name : Old Net Name=FL?5 New Net Name=FL51
+Change Class Name : Old Net Name=FL?6 New Net Name=FL81
+Change Class Name : Old Net Name=FL?7 New Net Name=FL61
+Change Class Name : Old Net Name=FL?8 New Net Name=FL71
+Change Class Name : Old Net Name=FL?9 New Net Name=FL12
+Change Class Name : Old Net Name=FL?10 New Net Name=FL22
+Change Class Name : Old Net Name=FL?11 New Net Name=FL32
+Change Class Name : Old Net Name=FL?12 New Net Name=FL42
+Change Class Name : Old Net Name=FL?13 New Net Name=FL52
+Change Class Name : Old Net Name=FL?14 New Net Name=FL82
+Change Class Name : Old Net Name=FL?15 New Net Name=FL62
+Change Class Name : Old Net Name=FL?16 New Net Name=FL72
+Added Member To Class: ClassName=EMG_Sensor_Board Member=Component C1 AYF533235
+Added Member To Class: ClassName=PWR Member=Component C2 220n
+Added Member To Class: ClassName=PWR Member=Component C3 2.2u
+Added Member To Class: ClassName=PWR Member=Component C6 4.7uF
+Added Member To Class: ClassName=PWR Member=Component C8 10uF
+Added Member To Class: ClassName=PWR Member=Component C9 1uF
+Added Member To Class: ClassName=PWR Member=Component C11 1uF
+Added Member To Class: ClassName=PWR Member=Component C12 100 nF
+Added Member To Class: ClassName=PWR Member=Component C13 4.7uF
+Added Member To Class: ClassName=PWR Member=Component C14 10uF
+Added Member To Class: ClassName=MC Member=Component C17 100nF
+Added Member To Class: ClassName=MC Member=Component C18 100nF
+Added Member To Class: ClassName=MC Member=Component C19 4.7 uF
+Added Member To Class: ClassName=MC Member=Component C21 10nF
+Added Member To Class: ClassName=MC Member=Component C25 100nF
+Added Member To Class: ClassName=MC Member=Component C26 4.7 uF
+Added Member To Class: ClassName=AFE1 Member=Component C30_AFE1 (C30) 1.5nF
+Added Member To Class: ClassName=AFE1 Member=Component C31_AFE1 (C31) 100nF
+Added Member To Class: ClassName=AFE2 Member=Component C31_AFE2 (C31) 100nF
+Added Member To Class: ClassName=AFE2 Member=Component C32_AFE2 (C32) 10uF
+Added Member To Class: ClassName=AFE2 Member=Component C33_AFE2 (C33) 100uF
+Added Member To Class: ClassName=AFE1 Member=Component C34_AFE1 (C34) 1uF
+Added Member To Class: ClassName=AFE2 Member=Component C34_AFE2 (C34) 1uF
+Added Member To Class: ClassName=AFE1 Member=Component C35_AFE1 (C35) 1uF
+Added Member To Class: ClassName=AFE2 Member=Component C35_AFE2 (C35) 1uF
+Added Member To Class: ClassName=AFE1 Member=Component C36_AFE1 (C36) 1uF
+Added Member To Class: ClassName=AFE2 Member=Component C36_AFE2 (C36) 1uF
+Added Member To Class: ClassName=AFE1 Member=Component C37_AFE1 (C37) 1uF
+Added Member To Class: ClassName=AFE1 Member=Component C38_AFE1 (C38) 100nF
+Added Member To Class: ClassName=AFE1 Member=Component C39_AFE1 (C39) 100nF
+Added Member To Class: ClassName=AFE2 Member=Component C39_AFE2 (C39) 100nF
+Added Member To Class: ClassName=AFE1 Member=Component C40_AFE1 (C40) 100nF
+Added Member To Class: ClassName=AFE2 Member=Component C40_AFE2 (C40) 100nF
+Added Member To Class: ClassName=AFE1 Member=Component C41_AFE1 (C41) 100nF
+Added Member To Class: ClassName=AFE2 Member=Component C41_AFE2 (C41) 100nF
+Added Member To Class: ClassName=EMG_Sensor_Board Member=Component P1 SPI_MEASURE
+Added Member To Class: ClassName=EMG_Sensor_Board Member=Component P2 61300421121
+Added Member To Class: ClassName=PWR Member=Component R2 330R
+Added Member To Class: ClassName=PWR Member=Component R3 2k
+Added Member To Class: ClassName=PWR Member=Component R4 0R
+Added Member To Class: ClassName=PWR Member=Component R5 500R
+Added Member To Class: ClassName=MC Member=Component R6 330R
+Added Member To Class: ClassName=MC Member=Component R7 330R
+Added Member To Class: ClassName=Filter Member=FL1 (Filter.SchDoc)
+Added Member To Class: ClassName=Filter Member=FL1 (Filter.SchDoc)
+Added Member To Class: ClassName=Filter Member=FL2 (Filter.SchDoc)
+Added Member To Class: ClassName=Filter Member=FL2 (Filter.SchDoc)
+Added Member To Class: ClassName=Filter Member=FL3 (Filter.SchDoc)
+Added Member To Class: ClassName=Filter Member=FL3 (Filter.SchDoc)
+Added Member To Class: ClassName=Filter Member=FL4 (Filter.SchDoc)
+Added Member To Class: ClassName=Filter Member=FL4 (Filter.SchDoc)
+Added Member To Class: ClassName=Filter Member=FL5 (Filter.SchDoc)
+Added Member To Class: ClassName=Filter Member=FL5 (Filter.SchDoc)
+Added Member To Class: ClassName=Filter Member=FL6 (Filter.SchDoc)
+Added Member To Class: ClassName=Filter Member=FL6 (Filter.SchDoc)
+Added Member To Class: ClassName=Filter Member=FL7 (Filter.SchDoc)
+Added Member To Class: ClassName=Filter Member=FL7 (Filter.SchDoc)
+Added Member To Class: ClassName=Filter Member=FL8 (Filter.SchDoc)
+Added Member To Class: ClassName=Filter Member=FL8 (Filter.SchDoc)
+Change Room Name: Old Name=FL?12 New Name=FL62
+Change Room Scope: Old Scope=InComponentClass('FL?12') New Scope=InComponentClass('FL62')
+Change Room Name: Old Name=FL?13 New Name=FL71
+Change Room Scope: Old Scope=InComponentClass('FL?13') New Scope=InComponentClass('FL71')
+Added Room: Name=FL11
+Added Room: Name=FL12
+Added Room: Name=FL21
+Added Room: Name=FL22
+Added Room: Name=FL31
+Added Room: Name=FL32
+Added Room: Name=FL41
+Added Room: Name=FL42
+Added Room: Name=FL51
+Added Room: Name=FL52
+Added Room: Name=FL61
+Added Room: Name=FL72
+Added Room: Name=FL81
+Added Room: Name=FL82

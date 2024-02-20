@@ -1,0 +1,9 @@
+Manufacturer=CUI Devices
+PartNumber=SJ-3502-SMT-TR
+PartCategory=Connector
+PackageCategory=Other
+PinCount=6
+Version=1.3
+Released=2021-09-18 06:18:12
+Downloaded=2024-02-20 16:13:23
+3D=N

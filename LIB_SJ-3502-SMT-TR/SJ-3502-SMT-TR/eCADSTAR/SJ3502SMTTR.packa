@@ -1,0 +1,13 @@
+(unit MM)
+
+(package "SJ-3502-SMT-TR"
+    (type UNDEF)
+    (uver 2)
+    (cuser "SamacSys")
+    (uuser "SamacSys")
+    (utime 2021-09-18-06:18:12)
+    (mountForm default
+        (footprintRef "SJ3502SMTTR")
+        (spec "System")
+    )
+)
