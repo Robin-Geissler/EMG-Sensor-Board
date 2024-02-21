@@ -1,0 +1,5 @@
+Add Pin To Net: Unknown Pin: Pin D1-1
+Add Pin To Net: Unknown Pin: Pin D1-2
+Change Room Name: Old Name=RF New Name=AFE1
+Change Room Scope: Old Scope=InComponentClass('RF') New Scope=InComponentClass('AFE1')
+Added Room: Name=AFE2

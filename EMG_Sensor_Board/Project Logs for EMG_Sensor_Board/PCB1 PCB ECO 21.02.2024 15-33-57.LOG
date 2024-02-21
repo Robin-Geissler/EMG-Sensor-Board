@@ -1,0 +1,4 @@
+Added Component: Designator=D1(SOD-123-D)
+Added Pin To Net: NetName=V_USB Pin=D1-1
+Added Pin To Net: NetName=V_Sys Pin=D1-2
+Added Member To Class: ClassName=PWR Member=Component D1 PMEG3015EH
