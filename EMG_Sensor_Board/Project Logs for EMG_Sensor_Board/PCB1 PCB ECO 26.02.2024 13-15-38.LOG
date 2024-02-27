@@ -1,0 +1,240 @@
+Removed Pin From Net: NetName=NetC1_16 Pin=C46_FL11-1
+Removed Pin From Net: NetName=NetC1_32 Pin=C46_FL12-1
+Removed Pin From Net: NetName=NetC1_14 Pin=C46_FL21-1
+Removed Pin From Net: NetName=NetC1_30 Pin=C46_FL22-1
+Removed Pin From Net: NetName=NetC1_12 Pin=C46_FL31-1
+Removed Pin From Net: NetName=NetC1_28 Pin=C46_FL32-1
+Removed Pin From Net: NetName=NetC1_10 Pin=C46_FL41-1
+Removed Pin From Net: NetName=NetC1_26 Pin=C46_FL42-1
+Removed Pin From Net: NetName=NetC1_8 Pin=C46_FL51-1
+Removed Pin From Net: NetName=NetC1_24 Pin=C46_FL52-1
+Removed Pin From Net: NetName=NetC1_6 Pin=C46_FL61-1
+Removed Pin From Net: NetName=NetC1_22 Pin=C46_FL62-1
+Removed Pin From Net: NetName=NetC1_4 Pin=C46_FL71-1
+Removed Pin From Net: NetName=NetC1_20 Pin=C46_FL72-1
+Removed Pin From Net: NetName=NetC1_2 Pin=C46_FL81-1
+Removed Pin From Net: NetName=NetC1_18 Pin=C46_FL82-1
+Removed Pin From Net: NetName=NetC1_15 Pin=C47_FL11-2
+Removed Pin From Net: NetName=NetC1_31 Pin=C47_FL12-2
+Removed Pin From Net: NetName=NetC1_13 Pin=C47_FL21-2
+Removed Pin From Net: NetName=NetC1_29 Pin=C47_FL22-2
+Removed Pin From Net: NetName=NetC1_11 Pin=C47_FL31-2
+Removed Pin From Net: NetName=NetC1_27 Pin=C47_FL32-2
+Removed Pin From Net: NetName=NetC1_9 Pin=C47_FL41-2
+Removed Pin From Net: NetName=NetC1_25 Pin=C47_FL42-2
+Removed Pin From Net: NetName=NetC1_7 Pin=C47_FL51-2
+Removed Pin From Net: NetName=NetC1_23 Pin=C47_FL52-2
+Removed Pin From Net: NetName=NetC1_5 Pin=C47_FL61-2
+Removed Pin From Net: NetName=NetC1_21 Pin=C47_FL62-2
+Removed Pin From Net: NetName=NetC1_3 Pin=C47_FL71-2
+Removed Pin From Net: NetName=NetC1_19 Pin=C47_FL72-2
+Removed Pin From Net: NetName=NetC1_1 Pin=C47_FL81-2
+Removed Pin From Net: NetName=NetC1_17 Pin=C47_FL82-2
+Removed Pin From Net: NetName=NetC1_16 Pin=R21_FL11-2
+Removed Pin From Net: NetName=NetC1_32 Pin=R21_FL12-2
+Removed Pin From Net: NetName=NetC1_14 Pin=R21_FL21-2
+Removed Pin From Net: NetName=NetC1_30 Pin=R21_FL22-2
+Removed Pin From Net: NetName=NetC1_12 Pin=R21_FL31-2
+Removed Pin From Net: NetName=NetC1_28 Pin=R21_FL32-2
+Removed Pin From Net: NetName=NetC1_10 Pin=R21_FL41-2
+Removed Pin From Net: NetName=NetC1_26 Pin=R21_FL42-2
+Removed Pin From Net: NetName=NetC1_8 Pin=R21_FL51-2
+Removed Pin From Net: NetName=NetC1_24 Pin=R21_FL52-2
+Removed Pin From Net: NetName=NetC1_6 Pin=R21_FL61-2
+Removed Pin From Net: NetName=NetC1_22 Pin=R21_FL62-2
+Removed Pin From Net: NetName=NetC1_4 Pin=R21_FL71-2
+Removed Pin From Net: NetName=NetC1_20 Pin=R21_FL72-2
+Removed Pin From Net: NetName=NetC1_2 Pin=R21_FL81-2
+Removed Pin From Net: NetName=NetC1_18 Pin=R21_FL82-2
+Removed Pin From Net: NetName=NetC1_15 Pin=R22_FL11-2
+Removed Pin From Net: NetName=NetC1_31 Pin=R22_FL12-2
+Removed Pin From Net: NetName=NetC1_13 Pin=R22_FL21-2
+Removed Pin From Net: NetName=NetC1_29 Pin=R22_FL22-2
+Removed Pin From Net: NetName=NetC1_11 Pin=R22_FL31-2
+Removed Pin From Net: NetName=NetC1_27 Pin=R22_FL32-2
+Removed Pin From Net: NetName=NetC1_9 Pin=R22_FL41-2
+Removed Pin From Net: NetName=NetC1_25 Pin=R22_FL42-2
+Removed Pin From Net: NetName=NetC1_7 Pin=R22_FL51-2
+Removed Pin From Net: NetName=NetC1_23 Pin=R22_FL52-2
+Removed Pin From Net: NetName=NetC1_5 Pin=R22_FL61-2
+Removed Pin From Net: NetName=NetC1_21 Pin=R22_FL62-2
+Removed Pin From Net: NetName=NetC1_3 Pin=R22_FL71-2
+Removed Pin From Net: NetName=NetC1_19 Pin=R22_FL72-2
+Removed Pin From Net: NetName=NetC1_1 Pin=R22_FL81-2
+Removed Pin From Net: NetName=NetC1_17 Pin=R22_FL82-2
+Change Component Footprint: Designator=P7_AFE1 Old Footprint=61300311121 New Footprint=61300311121
+Change Component Footprint: Designator=P7_AFE2 Old Footprint=61300311121 New Footprint=61300311121
+Change Component Footprint: Designator=P8_AFE1 Old Footprint=61300311121 New Footprint=61300311121
+Change Component Footprint: Designator=P8_AFE2 Old Footprint=61300311121 New Footprint=61300311121
+Change Component Footprint: Designator=P9 Old Footprint=61300311121 New Footprint=61300311121
+Change Component Footprint: Designator=AE1 Old Footprint=74889102450 New Footprint=74889102450
+Change Component Footprint: Designator=D3 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D4 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D5 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D6 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D7 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D8 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D9 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D10 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D11 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D12 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Added Pin To Net: NetName=NetC1_16 Pin=R21_FL11-1
+Added Pin To Net: NetName=NetC1_32 Pin=R21_FL12-1
+Added Pin To Net: NetName=NetC1_14 Pin=R21_FL21-1
+Added Pin To Net: NetName=NetC1_30 Pin=R21_FL22-1
+Added Pin To Net: NetName=NetC1_12 Pin=R21_FL31-1
+Added Pin To Net: NetName=NetC1_28 Pin=R21_FL32-1
+Added Pin To Net: NetName=NetC1_10 Pin=R21_FL41-1
+Added Pin To Net: NetName=NetC1_26 Pin=R21_FL42-1
+Added Pin To Net: NetName=NetC1_8 Pin=R21_FL51-1
+Added Pin To Net: NetName=NetC1_24 Pin=R21_FL52-1
+Added Pin To Net: NetName=NetC1_6 Pin=R21_FL61-1
+Added Pin To Net: NetName=NetC1_22 Pin=R21_FL62-1
+Added Pin To Net: NetName=NetC1_4 Pin=R21_FL71-1
+Added Pin To Net: NetName=NetC1_20 Pin=R21_FL72-1
+Added Pin To Net: NetName=NetC1_2 Pin=R21_FL81-1
+Added Pin To Net: NetName=NetC1_18 Pin=R21_FL82-1
+Added Pin To Net: NetName=NetC1_15 Pin=R22_FL11-1
+Added Pin To Net: NetName=NetC1_31 Pin=R22_FL12-1
+Added Pin To Net: NetName=NetC1_13 Pin=R22_FL21-1
+Added Pin To Net: NetName=NetC1_29 Pin=R22_FL22-1
+Added Pin To Net: NetName=NetC1_11 Pin=R22_FL31-1
+Added Pin To Net: NetName=NetC1_27 Pin=R22_FL32-1
+Added Pin To Net: NetName=NetC1_9 Pin=R22_FL41-1
+Added Pin To Net: NetName=NetC1_25 Pin=R22_FL42-1
+Added Pin To Net: NetName=NetC1_7 Pin=R22_FL51-1
+Added Pin To Net: NetName=NetC1_23 Pin=R22_FL52-1
+Added Pin To Net: NetName=NetC1_5 Pin=R22_FL61-1
+Added Pin To Net: NetName=NetC1_21 Pin=R22_FL62-1
+Added Pin To Net: NetName=NetC1_3 Pin=R22_FL71-1
+Added Pin To Net: NetName=NetC1_19 Pin=R22_FL72-1
+Added Pin To Net: NetName=NetC1_1 Pin=R22_FL81-1
+Added Pin To Net: NetName=NetC1_17 Pin=R22_FL82-1
+Added Pin To Net: NetName=NetC46_FL11_1 Pin=C46_FL11-1
+Added Pin To Net: NetName=NetC46_FL11_1 Pin=R21_FL11-2
+Added Pin To Net: NetName=NetC46_FL11_1 Pin=U4_AFE1-16
+Added Net: Name=NetC46_FL11_1
+Added Pin To Net: NetName=NetC46_FL12_1 Pin=C46_FL12-1
+Added Pin To Net: NetName=NetC46_FL12_1 Pin=R21_FL12-2
+Added Pin To Net: NetName=NetC46_FL12_1 Pin=U4_AFE2-16
+Added Net: Name=NetC46_FL12_1
+Added Pin To Net: NetName=NetC46_FL21_1 Pin=C46_FL21-1
+Added Pin To Net: NetName=NetC46_FL21_1 Pin=R21_FL21-2
+Added Pin To Net: NetName=NetC46_FL21_1 Pin=U4_AFE1-14
+Added Net: Name=NetC46_FL21_1
+Added Pin To Net: NetName=NetC46_FL22_1 Pin=C46_FL22-1
+Added Pin To Net: NetName=NetC46_FL22_1 Pin=R21_FL22-2
+Added Pin To Net: NetName=NetC46_FL22_1 Pin=U4_AFE2-14
+Added Net: Name=NetC46_FL22_1
+Added Pin To Net: NetName=NetC46_FL31_1 Pin=C46_FL31-1
+Added Pin To Net: NetName=NetC46_FL31_1 Pin=R21_FL31-2
+Added Pin To Net: NetName=NetC46_FL31_1 Pin=U4_AFE1-12
+Added Net: Name=NetC46_FL31_1
+Added Pin To Net: NetName=NetC46_FL32_1 Pin=C46_FL32-1
+Added Pin To Net: NetName=NetC46_FL32_1 Pin=R21_FL32-2
+Added Pin To Net: NetName=NetC46_FL32_1 Pin=U4_AFE2-12
+Added Net: Name=NetC46_FL32_1
+Added Pin To Net: NetName=NetC46_FL41_1 Pin=C46_FL41-1
+Added Pin To Net: NetName=NetC46_FL41_1 Pin=R21_FL41-2
+Added Pin To Net: NetName=NetC46_FL41_1 Pin=U4_AFE1-10
+Added Net: Name=NetC46_FL41_1
+Added Pin To Net: NetName=NetC46_FL42_1 Pin=C46_FL42-1
+Added Pin To Net: NetName=NetC46_FL42_1 Pin=R21_FL42-2
+Added Pin To Net: NetName=NetC46_FL42_1 Pin=U4_AFE2-10
+Added Net: Name=NetC46_FL42_1
+Added Pin To Net: NetName=NetC46_FL51_1 Pin=C46_FL51-1
+Added Pin To Net: NetName=NetC46_FL51_1 Pin=R21_FL51-2
+Added Pin To Net: NetName=NetC46_FL51_1 Pin=U4_AFE1-8
+Added Net: Name=NetC46_FL51_1
+Added Pin To Net: NetName=NetC46_FL52_1 Pin=C46_FL52-1
+Added Pin To Net: NetName=NetC46_FL52_1 Pin=R21_FL52-2
+Added Pin To Net: NetName=NetC46_FL52_1 Pin=U4_AFE2-8
+Added Net: Name=NetC46_FL52_1
+Added Pin To Net: NetName=NetC46_FL61_1 Pin=C46_FL61-1
+Added Pin To Net: NetName=NetC46_FL61_1 Pin=R21_FL61-2
+Added Pin To Net: NetName=NetC46_FL61_1 Pin=U4_AFE1-6
+Added Net: Name=NetC46_FL61_1
+Added Pin To Net: NetName=NetC46_FL62_1 Pin=C46_FL62-1
+Added Pin To Net: NetName=NetC46_FL62_1 Pin=R21_FL62-2
+Added Pin To Net: NetName=NetC46_FL62_1 Pin=U4_AFE2-6
+Added Net: Name=NetC46_FL62_1
+Added Pin To Net: NetName=NetC46_FL71_1 Pin=C46_FL71-1
+Added Pin To Net: NetName=NetC46_FL71_1 Pin=R21_FL71-2
+Added Pin To Net: NetName=NetC46_FL71_1 Pin=U4_AFE1-4
+Added Net: Name=NetC46_FL71_1
+Added Pin To Net: NetName=NetC46_FL72_1 Pin=C46_FL72-1
+Added Pin To Net: NetName=NetC46_FL72_1 Pin=R21_FL72-2
+Added Pin To Net: NetName=NetC46_FL72_1 Pin=U4_AFE2-4
+Added Net: Name=NetC46_FL72_1
+Added Pin To Net: NetName=NetC46_FL81_1 Pin=C46_FL81-1
+Added Pin To Net: NetName=NetC46_FL81_1 Pin=R21_FL81-2
+Added Pin To Net: NetName=NetC46_FL81_1 Pin=U4_AFE1-2
+Added Net: Name=NetC46_FL81_1
+Added Pin To Net: NetName=NetC46_FL82_1 Pin=C46_FL82-1
+Added Pin To Net: NetName=NetC46_FL82_1 Pin=R21_FL82-2
+Added Pin To Net: NetName=NetC46_FL82_1 Pin=U4_AFE2-2
+Added Net: Name=NetC46_FL82_1
+Added Pin To Net: NetName=NetC47_FL11_2 Pin=C47_FL11-2
+Added Pin To Net: NetName=NetC47_FL11_2 Pin=R22_FL11-2
+Added Pin To Net: NetName=NetC47_FL11_2 Pin=U4_AFE1-15
+Added Net: Name=NetC47_FL11_2
+Added Pin To Net: NetName=NetC47_FL12_2 Pin=C47_FL12-2
+Added Pin To Net: NetName=NetC47_FL12_2 Pin=R22_FL12-2
+Added Pin To Net: NetName=NetC47_FL12_2 Pin=U4_AFE2-15
+Added Net: Name=NetC47_FL12_2
+Added Pin To Net: NetName=NetC47_FL21_2 Pin=C47_FL21-2
+Added Pin To Net: NetName=NetC47_FL21_2 Pin=R22_FL21-2
+Added Pin To Net: NetName=NetC47_FL21_2 Pin=U4_AFE1-13
+Added Net: Name=NetC47_FL21_2
+Added Pin To Net: NetName=NetC47_FL22_2 Pin=C47_FL22-2
+Added Pin To Net: NetName=NetC47_FL22_2 Pin=R22_FL22-2
+Added Pin To Net: NetName=NetC47_FL22_2 Pin=U4_AFE2-13
+Added Net: Name=NetC47_FL22_2
+Added Pin To Net: NetName=NetC47_FL31_2 Pin=C47_FL31-2
+Added Pin To Net: NetName=NetC47_FL31_2 Pin=R22_FL31-2
+Added Pin To Net: NetName=NetC47_FL31_2 Pin=U4_AFE1-11
+Added Net: Name=NetC47_FL31_2
+Added Pin To Net: NetName=NetC47_FL32_2 Pin=C47_FL32-2
+Added Pin To Net: NetName=NetC47_FL32_2 Pin=R22_FL32-2
+Added Pin To Net: NetName=NetC47_FL32_2 Pin=U4_AFE2-11
+Added Net: Name=NetC47_FL32_2
+Added Pin To Net: NetName=NetC47_FL41_2 Pin=C47_FL41-2
+Added Pin To Net: NetName=NetC47_FL41_2 Pin=R22_FL41-2
+Added Pin To Net: NetName=NetC47_FL41_2 Pin=U4_AFE1-9
+Added Net: Name=NetC47_FL41_2
+Added Pin To Net: NetName=NetC47_FL42_2 Pin=C47_FL42-2
+Added Pin To Net: NetName=NetC47_FL42_2 Pin=R22_FL42-2
+Added Pin To Net: NetName=NetC47_FL42_2 Pin=U4_AFE2-9
+Added Net: Name=NetC47_FL42_2
+Added Pin To Net: NetName=NetC47_FL51_2 Pin=C47_FL51-2
+Added Pin To Net: NetName=NetC47_FL51_2 Pin=R22_FL51-2
+Added Pin To Net: NetName=NetC47_FL51_2 Pin=U4_AFE1-7
+Added Net: Name=NetC47_FL51_2
+Added Pin To Net: NetName=NetC47_FL52_2 Pin=C47_FL52-2
+Added Pin To Net: NetName=NetC47_FL52_2 Pin=R22_FL52-2
+Added Pin To Net: NetName=NetC47_FL52_2 Pin=U4_AFE2-7
+Added Net: Name=NetC47_FL52_2
+Added Pin To Net: NetName=NetC47_FL61_2 Pin=C47_FL61-2
+Added Pin To Net: NetName=NetC47_FL61_2 Pin=R22_FL61-2
+Added Pin To Net: NetName=NetC47_FL61_2 Pin=U4_AFE1-5
+Added Net: Name=NetC47_FL61_2
+Added Pin To Net: NetName=NetC47_FL62_2 Pin=C47_FL62-2
+Added Pin To Net: NetName=NetC47_FL62_2 Pin=R22_FL62-2
+Added Pin To Net: NetName=NetC47_FL62_2 Pin=U4_AFE2-5
+Added Net: Name=NetC47_FL62_2
+Added Pin To Net: NetName=NetC47_FL71_2 Pin=C47_FL71-2
+Added Pin To Net: NetName=NetC47_FL71_2 Pin=R22_FL71-2
+Added Pin To Net: NetName=NetC47_FL71_2 Pin=U4_AFE1-3
+Added Net: Name=NetC47_FL71_2
+Added Pin To Net: NetName=NetC47_FL72_2 Pin=C47_FL72-2
+Added Pin To Net: NetName=NetC47_FL72_2 Pin=R22_FL72-2
+Added Pin To Net: NetName=NetC47_FL72_2 Pin=U4_AFE2-3
+Added Net: Name=NetC47_FL72_2
+Added Pin To Net: NetName=NetC47_FL81_2 Pin=C47_FL81-2
+Added Pin To Net: NetName=NetC47_FL81_2 Pin=R22_FL81-2
+Added Pin To Net: NetName=NetC47_FL81_2 Pin=U4_AFE1-1
+Added Net: Name=NetC47_FL81_2
+Added Pin To Net: NetName=NetC47_FL82_2 Pin=C47_FL82-2
+Added Pin To Net: NetName=NetC47_FL82_2 Pin=R22_FL82-2
+Added Pin To Net: NetName=NetC47_FL82_2 Pin=U4_AFE2-1
+Added Net: Name=NetC47_FL82_2

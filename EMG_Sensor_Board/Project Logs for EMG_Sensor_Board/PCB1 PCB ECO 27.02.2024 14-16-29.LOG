@@ -1,0 +1,27 @@
+Added Component: Designator=B5(ESDA6V1P6)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = "ESDA6V1P6"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = "https://www.arrow.com/en/products/esda6v1p6/stmicroelectronics?region=nac"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "https://www.st.com/resource/en/datasheet/esda14v2bp6.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Geometry.Height"; Value = "0.62mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "STMicroelectronics"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "ESDA6V1P6"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "511-ESDA6V1P6"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/STMicroelectronics/ESDA6V1P6?qs=ewe0KQ%2FSs5H0%252BSAub%2FR2ag%3D%3D"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Mouser"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "511-ESDA6V1P6"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=AGND Pin=B5-2
+Added Pin To Net: NetName=AGND Pin=B5-5
+Change Net Name : Old Net Name=NetC30_AFE1_2 New Net Name=BIASOUT_AFE1
+Change Net Name : Old Net Name=NetC30_AFE2_2 New Net Name=BIASOUT_AFE2
+Change Net Name : Old Net Name=NetJ9_AFE1_1 New Net Name=SRB1_AFE1
+Change Net Name : Old Net Name=NetJ9_AFE2_1 New Net Name=SRB1_AFE2
+Change Net Name : Old Net Name=NetJ10_AFE1_1 New Net Name=BIASIN_AFE1
+Change Net Name : Old Net Name=NetJ10_AFE2_1 New Net Name=BIASIN_AFE2
+Added Pin To Net: NetName=BIASIN Pin=B5-6
+Added Net: Name=BIASIN
+Added Pin To Net: NetName=BIASOUT Pin=B5-4
+Added Net: Name=BIASOUT
+Added Pin To Net: NetName=SRB1 Pin=B5-1
+Added Net: Name=SRB1
+Added Member To Class: ClassName=EMG_Sensor_Board Member=Component B5 ESDA6V1P6
+Added Member To Class: ClassName=AFE2 Member=Component J9_AFE2 (J9) 15-91-6042

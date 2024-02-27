@@ -1,0 +1,76 @@
+Removed Pin From Net: NetName=5V Pin=P7_AFE1-1
+Removed Pin From Net: NetName=AGND Pin=P7_AFE1-3
+Removed Pin From Net: NetName=5V Pin=P7_AFE2-1
+Removed Pin From Net: NetName=AGND Pin=P7_AFE2-3
+Removed Pin From Net: NetName=BIAS_OUT_1 Pin=P8_AFE1-1
+Removed Pin From Net: NetName=NetC30_AFE1_2 Pin=P8_AFE1-2
+Removed Pin From Net: NetName=BIAS_OUT_2 Pin=P8_AFE2-1
+Removed Pin From Net: NetName=NetC30_AFE2_2 Pin=P8_AFE2-2
+Removed Member From Class: ClassName=AFE1 Member=P7_AFE1
+Removed Member From Class: ClassName=AFE2 Member=P7_AFE2
+Removed Member From Class: ClassName=AFE1 Member=P8_AFE1
+Removed Member From Class: ClassName=AFE2 Member=P8_AFE2
+Added Component: Designator=J9_AFE1(15916042)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "https://componentsearchengine.com/Datasheets/1/15-91-6042.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Geometry.Height"; Value = "11.69mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Molex"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "15-91-6042"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "538-15-91-6042"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/Molex/15-91-6042?qs=3DzawVMofg8HeBuyct9LCA%3D%3D"; VariantName = "[No Variations]"
+Added Component: Designator=J9_AFE2(15916042)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "https://componentsearchengine.com/Datasheets/1/15-91-6042.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Geometry.Height"; Value = "11.69mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Molex"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "15-91-6042"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "538-15-91-6042"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/Molex/15-91-6042?qs=3DzawVMofg8HeBuyct9LCA%3D%3D"; VariantName = "[No Variations]"
+Added Component: Designator=J10_AFE1(15916042)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "https://componentsearchengine.com/Datasheets/1/15-91-6042.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Geometry.Height"; Value = "11.69mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Molex"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "15-91-6042"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "538-15-91-6042"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/Molex/15-91-6042?qs=3DzawVMofg8HeBuyct9LCA%3D%3D"; VariantName = "[No Variations]"
+Added Component: Designator=J10_AFE2(15916042)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "https://componentsearchengine.com/Datasheets/1/15-91-6042.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Geometry.Height"; Value = "11.69mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Molex"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "15-91-6042"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "538-15-91-6042"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/Molex/15-91-6042?qs=3DzawVMofg8HeBuyct9LCA%3D%3D"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=5V Pin=J9_AFE1-2
+Added Pin To Net: NetName=AGND Pin=J9_AFE1-3
+Added Pin To Net: NetName=AGND Pin=J9_AFE1-4
+Added Pin To Net: NetName=5V Pin=J9_AFE2-2
+Added Pin To Net: NetName=AGND Pin=J9_AFE2-3
+Added Pin To Net: NetName=AGND Pin=J9_AFE2-4
+Added Pin To Net: NetName=NetC30_AFE1_2 Pin=J10_AFE1-2
+Added Pin To Net: NetName=BIAS_OUT_1 Pin=J10_AFE1-3
+Added Pin To Net: NetName=NetC30_AFE1_2 Pin=J10_AFE1-4
+Added Pin To Net: NetName=NetC30_AFE2_2 Pin=J10_AFE2-2
+Added Pin To Net: NetName=BIAS_OUT_2 Pin=J10_AFE2-3
+Added Pin To Net: NetName=NetC30_AFE2_2 Pin=J10_AFE2-4
+Added Pin To Net: NetName=NetJ9_AFE1_1 Pin=J9_AFE1-1
+Added Pin To Net: NetName=NetJ9_AFE1_1 Pin=U4_AFE1-17
+Added Net: Name=NetJ9_AFE1_1
+Added Pin To Net: NetName=NetJ9_AFE2_1 Pin=J9_AFE2-1
+Added Pin To Net: NetName=NetJ9_AFE2_1 Pin=U4_AFE2-17
+Added Net: Name=NetJ9_AFE2_1
+Added Pin To Net: NetName=NetJ10_AFE1_1 Pin=J10_AFE1-1
+Added Pin To Net: NetName=NetJ10_AFE1_1 Pin=U4_AFE1-62
+Added Net: Name=NetJ10_AFE1_1
+Added Pin To Net: NetName=NetJ10_AFE2_1 Pin=J10_AFE2-1
+Added Pin To Net: NetName=NetJ10_AFE2_1 Pin=U4_AFE2-62
+Added Net: Name=NetJ10_AFE2_1
+Added Member To Class: ClassName=AFE1 Member=Component J9_AFE1 (J9) 15-91-6042
+Added Member To Class: ClassName=AFE2 Member=Component J9_AFE2 (J9) 15-91-6042
+Added Member To Class: ClassName=AFE1 Member=Component J10_AFE1 (J10) 15-91-6042
+Added Member To Class: ClassName=AFE2 Member=Component J10_AFE2 (J10) 15-91-6042

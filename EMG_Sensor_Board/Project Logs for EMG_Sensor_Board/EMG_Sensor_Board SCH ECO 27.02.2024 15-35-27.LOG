@@ -1,0 +1,2 @@
+Remove Pin=J11-3 From Net=BIAS_OUT_2
+Remove Pin=J11-4 From Net=BIAS_OUT_1
