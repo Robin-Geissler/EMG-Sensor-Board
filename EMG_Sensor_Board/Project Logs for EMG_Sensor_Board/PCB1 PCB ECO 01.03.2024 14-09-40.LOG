@@ -1,0 +1,5 @@
+Removed Pin From Net: NetName=5VMEASURE Pin=J8-1
+Removed Pin From Net: NetName=5V Pin=J8-3
+Added Pin To Net: NetName=5V Pin=J8-1
+Added Pin To Net: NetName=5VMEASURE Pin=J8-3
+Added Member To Class: ClassName=EMG_Sensor_Board Member=Component C1 AYF533235
