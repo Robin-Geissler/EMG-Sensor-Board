@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=SPI_NCS_2 Pin=J5-A2
+Removed Pin From Net: NetName=SPI_NCS_1 Pin=J5-B3
+Added Pin To Net: NetName=SPI_NCS_1 Pin=J5-A2
+Added Pin To Net: NetName=SPI_NCS_2 Pin=J5-B3
