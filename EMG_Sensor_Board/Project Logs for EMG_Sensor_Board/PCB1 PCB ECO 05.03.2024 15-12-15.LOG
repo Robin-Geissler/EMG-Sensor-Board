@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=N_PWDN_1 Pin=B3-1
+Removed Pin From Net: NetName=N_RESET_1 Pin=B3-3
+Added Pin To Net: NetName=N_RESET_1 Pin=B3-1
+Added Pin To Net: NetName=N_PWDN_1 Pin=B3-3
