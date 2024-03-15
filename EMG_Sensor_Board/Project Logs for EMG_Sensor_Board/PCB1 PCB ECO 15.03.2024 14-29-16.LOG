@@ -1,0 +1,44 @@
+Change Component Footprint: Designator=D13 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Change Component Footprint: Designator=D14 Old Footprint=WL-SMCW_0603_150060xx75000 New Footprint=WL-SMCW_0603_150060xx75000
+Added Component: Designator=J3(693072010801)
+Add component (AddParameter): Name = "Color"; Value = "Black"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Connector Type"; Value = "Connector"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Contact Material"; Value = "Copper, Gold"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Contact Plating"; Value = "Gold"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Current Rating"; Value = "500mA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "1.75mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Insulation Resistance"; Value = "1GO"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Length"; Value = "14.5mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Max Operating Temperature"; Value = "85°C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Memory Type"; Value = "FLASH"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Min Operating Temperature"; Value = "-25°C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mount"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "NexarPartId"; Value = "22866686"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Number of Contacts"; Value = "8"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Number of Pins"; Value = "8"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Number of Positions"; Value = "8"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Operating Supply Voltage"; Value = "100V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Packaging"; Value = "Tape and Reel"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "REACH SVHC"; Value = "Unknown"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RoHS"; Value = "Compliant"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage Rating"; Value = "100V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Width"; Value = "13.5mm"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=3V3 Pin=J3-4
+Added Pin To Net: NetName=GND Pin=J3-6
+Added Pin To Net: NetName=GND Pin=J3-Shell
+Added Pin To Net: NetName=GND Pin=J3-Shell
+Added Pin To Net: NetName=GND Pin=J3-Shell
+Added Pin To Net: NetName=GND Pin=J3-Shell
+Added Pin To Net: NetName=SPI2_MISO Pin=J3-7
+Added Pin To Net: NetName=SPI2_MISO Pin=U3-48
+Added Net: Name=SPI2_MISO
+Added Pin To Net: NetName=SPI2_MOSI Pin=J3-3
+Added Pin To Net: NetName=SPI2_MOSI Pin=U3-49
+Added Net: Name=SPI2_MOSI
+Added Pin To Net: NetName=SPI2_NCS1 Pin=J3-2
+Added Pin To Net: NetName=SPI2_NCS1 Pin=U3-38
+Added Net: Name=SPI2_NCS1
+Added Pin To Net: NetName=SPI2_SCK Pin=J3-5
+Added Pin To Net: NetName=SPI2_SCK Pin=U3-47
+Added Net: Name=SPI2_SCK
+Added Member To Class: ClassName=EMG_Sensor_Board Member=Component J3 693072010801

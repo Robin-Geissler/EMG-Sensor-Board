@@ -1,0 +1,61 @@
+Removed Pin From Net: NetName=NetD5_2 Pin=R6-1
+Removed Pin From Net: NetName=Err_LED_1 Pin=R6-2
+Removed Pin From Net: NetName=NetD6_2 Pin=R7-1
+Removed Pin From Net: NetName=Err_LED_2 Pin=R7-2
+Removed Pin From Net: NetName=SPI_Tx_LED Pin=U3-9
+Removed Pin From Net: NetName=SPI_Rx_LED Pin=U3-10
+Removed Pin From Net: NetName=Err_LED_1 Pin=U3-15
+Removed Pin From Net: NetName=Err_LED_2 Pin=U3-16
+Removed Pin From Net: NetName=SPI2_NCS1 Pin=U3-38
+Removed Pin From Net: NetName=SPI2_SCK Pin=U3-47
+Removed Pin From Net: NetName=SPI2_MISO Pin=U3-48
+Removed Pin From Net: NetName=SPI2_MOSI Pin=U3-49
+Change Component Footprint: Designator=J3 Old Footprint=693072010801 New Footprint=693072010801
+Change Component Footprint: Designator=R6 Old Footprint=RESC1608X55X30LL15T15 New Footprint=RESC1609X55X30ML10T20
+Change Managed Component Library Link : Designator=R6 Old VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 New VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 Old ItemGUID=81F84BFC-97A3-454F-87CF-6EE81748FB79 New ItemGUID=F0CE420D-2744-49DB-BE4B-D8C3AB7112A5 Old RevisionGUID=A6877783-A948-4550-AD29-5CA15543A78F New RevisionGUID=B2B71F45-6398-413D-AD08-8CCD6A8479BC
+Change component parameters: Designator = "R6" ("R6"); Footprint = "RESC1608X55X30LL15T15"; UniqueID = "\OXUENEBK\YOFZRCUW" ("\OXUENEBK\YOFZRCUW")
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Vishay Dale"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Number"; Value = "TNPW0603100KBEEA"; VariantName = "[No Variations]"
+Added Component: Designator=R26(RESC1608X55X30LL15T15)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer URL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.panasonic.com/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C86.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Contact Finish"; Value = "Gold"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Contact Material"; Value = "Copper"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Contact Plating"; Value = "Gold"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Current Rating"; Value = "500 mA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DatasheetVersion"; Value = "Apr-15"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Gender"; Value = "Male"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "1.45 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Lead Pitch"; Value = "1.1 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Length"; Value = "13.7 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mating Cycles"; Value = "10000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Max Operating Temperature"; Value = "85 degC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Min Operating Temperature"; Value = "-25 degC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mount"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Quantity"; Value = "1500"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "2-Pin Surface Mount Device, Body 1.6 x 0.85 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "0603"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Packaging"; Value = "Tape and Reel"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Pins"; Value = "8"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "REACH SVHC"; Value = "No SVHC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RoHSCompliant"; Value = "true"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage Rating"; Value = "10 V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Width"; Value = "1.45 mm"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=SPI2_NCS1 Pin=R6-1
+Added Pin To Net: NetName=3V3 Pin=R6-2
+Added Pin To Net: NetName=NetD5_2 Pin=R7-1
+Added Pin To Net: NetName=Err_LED_1 Pin=R7-2
+Added Pin To Net: NetName=NetD6_2 Pin=R26-1
+Added Pin To Net: NetName=Err_LED_2 Pin=R26-2
+Added Pin To Net: NetName=SPI2_MOSI Pin=U3-10
+Added Pin To Net: NetName=SPI2_MISO Pin=U3-11
+Added Pin To Net: NetName=SPI2_NCS1 Pin=U3-12
+Added Pin To Net: NetName=SPI2_SCK Pin=U3-24
+Added Pin To Net: NetName=SPI_Tx_LED Pin=U3-28
+Added Pin To Net: NetName=SPI_Rx_LED Pin=U3-29
+Added Pin To Net: NetName=Err_LED_1 Pin=U3-38
+Added Pin To Net: NetName=Err_LED_2 Pin=U3-39
+Added Member To Class: ClassName=EMG_Sensor_Board Member=Component J1 SHF-105-01-L-D-SM
+Added Member To Class: ClassName=MC Member=Component R26 330R
