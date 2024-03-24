@@ -1,0 +1,12 @@
+Output: NC_Drill_Files_EMG_Sensor_Board_V1.0
+Type  : NC Drill
+From  : PCB Document [PCB1.PcbDoc]
+   Generated File[NC_Drill_Files_EMG_Sensor_Board_V1.0.TXT]
+   Generated File[NC_Drill_Files_EMG_Sensor_Board_V1.0.LDP]
+   Generated File[NC_Drill_Files_EMG_Sensor_Board_V1.0.DRR]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 16:24:28 On 22.03.2024
