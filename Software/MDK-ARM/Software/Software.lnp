@@ -1,9 +1,9 @@
 --cpu=Cortex-M4.fp.sp
 "software\startup_stm32wb55xx_cm4.o"
+"software\ads1299.o"
 "software\main.o"
 "software\stm32wbxx_it.o"
 "software\stm32wbxx_hal_msp.o"
-"software\ads1299.o"
 "software\user_diskio.o"
 "software\app_fatfs.o"
 "software\stm32wbxx_hal_rcc.o"

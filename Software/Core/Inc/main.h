@@ -61,8 +61,8 @@ void Error_Handler(void);
 #define CLK_SEL_2_GPIO_Port GPIOC
 #define N_PWDN_2_Pin GPIO_PIN_8
 #define N_PWDN_2_GPIO_Port GPIOB
-#define SPI2_NCS_1_Pin GPIO_PIN_3
-#define SPI2_NCS_1_GPIO_Port GPIOC
+#define SPI2_NCS1_Pin GPIO_PIN_3
+#define SPI2_NCS1_GPIO_Port GPIOC
 #define NDRDY_2_Pin GPIO_PIN_1
 #define NDRDY_2_GPIO_Port GPIOA
 #define N_RESET_2_Pin GPIO_PIN_2
@@ -93,10 +93,10 @@ void Error_Handler(void);
 #define N_RESET_1_GPIO_Port GPIOC
 #define N_PWDN_1_Pin GPIO_PIN_0
 #define N_PWDN_1_GPIO_Port GPIOD
-#define SPI1_NCS2_Pin GPIO_PIN_1
-#define SPI1_NCS2_GPIO_Port GPIOD
-#define SPI1_NCS2B6_Pin GPIO_PIN_6
-#define SPI1_NCS2B6_GPIO_Port GPIOB
+#define SPI1_NCS1_Pin GPIO_PIN_1
+#define SPI1_NCS1_GPIO_Port GPIOD
+#define SPI1_NCS2_Pin GPIO_PIN_6
+#define SPI1_NCS2_GPIO_Port GPIOB
 #define START_Pin GPIO_PIN_7
 #define START_GPIO_Port GPIOB
 

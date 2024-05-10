@@ -19,11 +19,10 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "app_fatfs.h"
-#include "ads1299.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "ads1299.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -44,6 +43,8 @@
 /* Private variables ---------------------------------------------------------*/
 SPI_HandleTypeDef hspi1;
 SPI_HandleTypeDef hspi2;
+DMA_HandleTypeDef hdma_spi1_tx;
+DMA_HandleTypeDef hdma_spi1_rx;
 
 PCD_HandleTypeDef hpcd_USB_FS;
 
@@ -55,6 +56,7 @@ PCD_HandleTypeDef hpcd_USB_FS;
 void SystemClock_Config(void);
 void PeriphCommonClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_DMA_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_USB_PCD_Init(void);
 static void MX_SPI2_Init(void);
@@ -98,6 +100,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_SPI1_Init();
   MX_USB_PCD_Init();
   MX_SPI2_Init();
@@ -105,7 +108,7 @@ int main(void)
     Error_Handler();
   }
   /* USER CODE BEGIN 2 */
-	ADS1299_Init(hspi1, CLK_SEL_1_GPIO_Port, CLK_SEL_1_Pin, false, 
+	ADS1299_Init(&hspi1, SPI1_NCS1_GPIO_Port, SPI1_NCS1_Pin, CLK_SEL_1_GPIO_Port, CLK_SEL_1_Pin, false, 
 	N_PWDN_1_GPIO_Port , N_PWDN_1_Pin, N_RESET_1_GPIO_Port, N_RESET_1_Pin);
   /* USER CODE END 2 */
 
@@ -116,12 +119,12 @@ int main(void)
 		 // Setze den GPIO Pin auf HIGH (LED an)
         HAL_GPIO_TogglePin(Error_LED_1_GPIO_Port, Error_LED_1_Pin);
 				HAL_GPIO_TogglePin(Error_LED_2_GPIO_Port, Error_LED_2_Pin);
-				ADS1299_WriteRegister(GPIO, 0x10);
-				HAL_Delay(1000);
+				ADS1299_WriteRegister(GPIO, 0xF0);
+				HAL_Delay(500);
 				ADS1299_WriteRegister(GPIO, 0x00);
 		
         // Warte für eine Sekunde (1000ms)
-        HAL_Delay(1000);
+        HAL_Delay(500);
 		
     /* USER CODE END WHILE */
 
@@ -331,6 +334,29 @@ static void MX_USB_PCD_Init(void)
 }
 
 /**
+  * Enable DMA controller clock
+  */
+static void MX_DMA_Init(void)
+{
+
+  /* DMA controller clock enable */
+  __HAL_RCC_DMAMUX1_CLK_ENABLE();
+  __HAL_RCC_DMA1_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA1_Channel1_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel1_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel1_IRQn);
+  /* DMA1_Channel2_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel2_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel2_IRQn);
+  /* DMAMUX1_OVR_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMAMUX1_OVR_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMAMUX1_OVR_IRQn);
+
+}
+
+/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -348,23 +374,23 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, CLK_SEL_2_Pin|SPI2_NCS_1_Pin|USB_Rx_LED_Pin|CLK_SEL_1_Pin
+  HAL_GPIO_WritePin(GPIOC, CLK_SEL_2_Pin|SPI2_NCS1_Pin|USB_Rx_LED_Pin|CLK_SEL_1_Pin
                           |N_RESET_1_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, N_PWDN_2_Pin|SPI_Tx_LED_Pin|SPI_Rx_LED_Pin|Error_LED_1_Pin
-                          |Error_LED_2_Pin|SPI1_NCS2B6_Pin|START_Pin, GPIO_PIN_RESET);
+                          |Error_LED_2_Pin|SPI1_NCS2_Pin|START_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, NDRDY_2_Pin|N_RESET_2_Pin|RF_Tx_LED_Pin|RF_Rx_LED_Pin
                           |USB_Tx_LED_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOD, N_PWDN_1_Pin|SPI1_NCS2_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOD, N_PWDN_1_Pin|SPI1_NCS1_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : CLK_SEL_2_Pin SPI2_NCS_1_Pin USB_Rx_LED_Pin CLK_SEL_1_Pin
+  /*Configure GPIO pins : CLK_SEL_2_Pin SPI2_NCS1_Pin USB_Rx_LED_Pin CLK_SEL_1_Pin
                            N_RESET_1_Pin */
-  GPIO_InitStruct.Pin = CLK_SEL_2_Pin|SPI2_NCS_1_Pin|USB_Rx_LED_Pin|CLK_SEL_1_Pin
+  GPIO_InitStruct.Pin = CLK_SEL_2_Pin|SPI2_NCS1_Pin|USB_Rx_LED_Pin|CLK_SEL_1_Pin
                           |N_RESET_1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
@@ -372,9 +398,9 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pins : N_PWDN_2_Pin SPI_Tx_LED_Pin SPI_Rx_LED_Pin Error_LED_1_Pin
-                           Error_LED_2_Pin SPI1_NCS2B6_Pin START_Pin */
+                           Error_LED_2_Pin SPI1_NCS2_Pin START_Pin */
   GPIO_InitStruct.Pin = N_PWDN_2_Pin|SPI_Tx_LED_Pin|SPI_Rx_LED_Pin|Error_LED_1_Pin
-                          |Error_LED_2_Pin|SPI1_NCS2B6_Pin|START_Pin;
+                          |Error_LED_2_Pin|SPI1_NCS2_Pin|START_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -401,8 +427,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(N_DRDY_1_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : N_PWDN_1_Pin SPI1_NCS2_Pin */
-  GPIO_InitStruct.Pin = N_PWDN_1_Pin|SPI1_NCS2_Pin;
+  /*Configure GPIO pins : N_PWDN_1_Pin SPI1_NCS1_Pin */
+  GPIO_InitStruct.Pin = N_PWDN_1_Pin|SPI1_NCS1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -413,6 +439,18 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi){
+		
+	if(hspi == &hspi1){
+		HAL_GPIO_WritePin(SPI1_NCS1_GPIO_Port, SPI1_NCS1_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(SPI1_NCS2_GPIO_Port, SPI1_NCS2_Pin, GPIO_PIN_SET);
+	}
+	if(hspi == &hspi2){
+		HAL_GPIO_WritePin(SPI2_NCS1_GPIO_Port, SPI2_NCS1_Pin, GPIO_PIN_SET);
+	}
+	
+}
 
 /* USER CODE END 4 */
 

@@ -59,7 +59,7 @@
 #define MISC2 0x16
 #define CONFIG4 0x17
 
-void ADS1299_Init(SPI_HandleTypeDef hspi, GPIO_TypeDef *CLKSEL_GPIOx, uint16_t CLKSEL_GPIO_Pin, bool extCLK, 
+void ADS1299_Init(SPI_HandleTypeDef *hspi, GPIO_TypeDef *spi_ncs_port, uint16_t spi_ncs_pin, GPIO_TypeDef *CLKSEL_GPIOx, uint16_t CLKSEL_GPIO_Pin, bool extCLK, 
 	GPIO_TypeDef *NPWDN_GPIOx, uint16_t NPWDN_GPIO_Pin,GPIO_TypeDef *NRESET_GPIOx, uint16_t NRESET_GPIO_Pin);
 void ADS1299_ReadData(uint8_t* buffer);
 void ADS1299_WriteRegister(uint8_t reg, uint8_t value);
