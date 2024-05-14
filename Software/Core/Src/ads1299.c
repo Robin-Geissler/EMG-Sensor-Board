@@ -5,8 +5,8 @@ SPI_HandleTypeDef *hspi_ads1299;
 GPIO_TypeDef *spi_ncs_port_ads1299;
 uint16_t spi_ncs_pin_ads1299;
 
-uint8_t sendDataBuff[3];
-uint8_t readDataBuff[3];
+uint8_t sendDataBuff[20];
+uint8_t readDataBuff[20];
  
 void ADS1299_Init(SPI_HandleTypeDef *hspi, GPIO_TypeDef *spi_ncs_port, uint16_t spi_ncs_pin,
 	GPIO_TypeDef *CLKSEL_GPIOx, uint16_t CLKSEL_GPIO_Pin, bool extCLK, 
@@ -51,7 +51,11 @@ void ADS1299_Init(SPI_HandleTypeDef *hspi, GPIO_TypeDef *spi_ncs_port, uint16_t 
 		/* Wait for at least 18 cycles = 18 * 666ns = 12us */
 		HAL_Delay(2);
 		
-		
+		/* no speciffic reason for this, can be deleted */
+//		HAL_Delay(1000);
+//		sendDataBuff[0] = STANDBY;
+//		HAL_SPI_Transmit_DMA(hspi_ads1299, sendDataBuff, 1);
+
 		/* send ads1299 RESET command */
 //		sendDataBuff[0] = RESET;
 //		HAL_GPIO_WritePin(spi_ncs_port_ads1299, spi_ncs_pin_ads1299, GPIO_PIN_RESET);
@@ -72,16 +76,18 @@ void ADS1299_WriteRegister(uint8_t reg, uint8_t value) {
 		sendDataBuff[2] = value;
     HAL_GPIO_WritePin(spi_ncs_port_ads1299, spi_ncs_pin_ads1299, GPIO_PIN_RESET);
 		HAL_SPI_Transmit_DMA(hspi_ads1299, sendDataBuff, 3);
+		
 }
  
 uint8_t ADS1299_ReadRegister(uint8_t reg) {
 		/* send Read Command */
 		sendDataBuff[0] = RREG | reg;
-		sendDataBuff[1] = 0x00;
+		sendDataBuff[1] = 0x01;
 		sendDataBuff[2] = 0x00;
+		sendDataBuff[3] = 0x00;
     
 		HAL_GPIO_WritePin(spi_ncs_port_ads1299, spi_ncs_pin_ads1299, GPIO_PIN_RESET);
-		HAL_SPI_TransmitReceive_DMA(hspi_ads1299, sendDataBuff, readDataBuff, sizeof(sendDataBuff));
+		HAL_SPI_TransmitReceive_DMA(hspi_ads1299, sendDataBuff, readDataBuff, 4);
     
 		return readDataBuff[2];
 }

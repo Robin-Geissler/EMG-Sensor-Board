@@ -110,6 +110,9 @@ int main(void)
   /* USER CODE BEGIN 2 */
 	ADS1299_Init(&hspi1, SPI1_NCS1_GPIO_Port, SPI1_NCS1_Pin, CLK_SEL_1_GPIO_Port, CLK_SEL_1_Pin, false, 
 	N_PWDN_1_GPIO_Port , N_PWDN_1_Pin, N_RESET_1_GPIO_Port, N_RESET_1_Pin);
+  
+	uint8_t test;
+	
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -122,7 +125,7 @@ int main(void)
 				ADS1299_WriteRegister(GPIO, 0xF0);
 				HAL_Delay(500);
 				ADS1299_WriteRegister(GPIO, 0x00);
-		
+				test = ADS1299_ReadRegister(GPIO);
         // Warte für eine Sekunde (1000ms)
         HAL_Delay(500);
 		
@@ -241,15 +244,15 @@ static void MX_SPI1_Init(void)
   hspi1.Init.Direction = SPI_DIRECTION_2LINES;
   hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
-  hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
+  hspi1.Init.CLKPhase = SPI_PHASE_2EDGE;
   hspi1.Init.NSS = SPI_NSS_SOFT;
-  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_16;
   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
   hspi1.Init.CRCPolynomial = 7;
   hspi1.Init.CRCLength = SPI_CRC_LENGTH_DATASIZE;
-  hspi1.Init.NSSPMode = SPI_NSS_PULSE_ENABLE;
+  hspi1.Init.NSSPMode = SPI_NSS_PULSE_DISABLE;
   if (HAL_SPI_Init(&hspi1) != HAL_OK)
   {
     Error_Handler();
