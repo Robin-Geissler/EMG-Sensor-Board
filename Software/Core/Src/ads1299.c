@@ -6,7 +6,7 @@ GPIO_TypeDef *spi_ncs_port_ads1299;
 uint16_t spi_ncs_pin_ads1299;
 
 uint8_t sendDataBuff[32];
-uint32_t readDataBuff[8];
+uint8_t readDataBuff[32];
  
  
  
@@ -90,16 +90,16 @@ void ADS1299_Init(SPI_HandleTypeDef *hspi, GPIO_TypeDef *spi_ncs_port, uint16_t 
 		HAL_Delay(100);
 		
 		/* Configure for test */
-		ADS1299_WriteRegister(CONFIG1, 0x96);
-		ADS1299_WriteRegister(CONFIG3, 0xC0);
-		ADS1299_WriteRegister(CH1SET, 0x01);
-		ADS1299_WriteRegister(CH2SET, 0x01);
-		ADS1299_WriteRegister(CH3SET, 0x01);
-		ADS1299_WriteRegister(CH4SET, 0x01);
-		ADS1299_WriteRegister(CH5SET, 0x01);
-		ADS1299_WriteRegister(CH6SET, 0x01);
-		ADS1299_WriteRegister(CH7SET, 0x01);
-		ADS1299_WriteRegister(CH8SET, 0x01);
+		ADS1299_WriteRegister(CONFIG1, 0xF4);
+		ADS1299_WriteRegister(CONFIG2, 0xD4);
+		ADS1299_WriteRegister(CH1SET, 0x55);
+		ADS1299_WriteRegister(CH2SET, 0x55);
+		ADS1299_WriteRegister(CH3SET, 0x55);
+		ADS1299_WriteRegister(CH4SET, 0x55);
+		ADS1299_WriteRegister(CH5SET, 0x55);
+		ADS1299_WriteRegister(CH6SET, 0x55);
+		ADS1299_WriteRegister(CH7SET, 0x55);
+		ADS1299_WriteRegister(CH8SET, 0x55);
 		
 		
 		
@@ -122,5 +122,10 @@ uint8_t *ADS1299_RDATA(){
 	return readDataBuff;
 }
  
+void ADS1299_Convert_Data(uint8_t *input, uint32_t *output){
+	for(int i = 0; i < 8; i++){
+		output[i] = (input[3 + i*3]) << 16| (input[3+ i*3 + 1] << 8) | (input[3 + i * 3 + 2]);
+	}
+}
 
 

@@ -71,8 +71,7 @@ void ADS1299_Init(SPI_HandleTypeDef *hspi, GPIO_TypeDef *spi_ncs_port, uint16_t 
 void ADS1299_ReadData(uint8_t* buffer);
 void ADS1299_RDATAC();
 uint8_t *ADS1299_RDATA();
-
-
+void ADS1299_Convert_Data(uint8_t *input, uint32_t *output);
 
 
 

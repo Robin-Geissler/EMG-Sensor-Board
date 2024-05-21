@@ -51,7 +51,7 @@ DMA_HandleTypeDef hdma_spi1_tx;
 DMA_HandleTypeDef hdma_spi1_rx;
 
 /* USER CODE BEGIN PV */
-uint8_t dataReading[32];
+uint32_t dataReading[8];
 
 /* USER CODE END PV */
 
@@ -128,8 +128,9 @@ int main(void)
 	/* read data continousely*/
 //	ADS1299_RDATAC();
 
+
 	
-	uint8_t test;
+	
 	
   /* USER CODE END 2 */
 
@@ -472,7 +473,8 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 		switch(GPIO_Pin){
 			case N_DRDY_1_Pin:
 //				ADS1299_WriteRegister(GPIO, 0xF0);	
-				CDC_Transmit_FS(ADS1299_RDATA(),32);
+				ADS1299_Convert_Data(ADS1299_RDATA(),dataReading);
+				CDC_Transmit_FS(dataReading,32);
 //				CDC_Transmit_FS((uint8_t*)"hi", 2);
 				
 //				ADS1299_WriteRegister(GPIO, 0x00);
