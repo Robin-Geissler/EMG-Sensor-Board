@@ -19,10 +19,14 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "app_fatfs.h"
+#include "usb_device.h"
+
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <string.h>
 #include "ads1299.h"
+#include "usbd_cdc_if.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -46,9 +50,8 @@ SPI_HandleTypeDef hspi2;
 DMA_HandleTypeDef hdma_spi1_tx;
 DMA_HandleTypeDef hdma_spi1_rx;
 
-PCD_HandleTypeDef hpcd_USB_FS;
-
 /* USER CODE BEGIN PV */
+uint8_t dataReading[32];
 
 /* USER CODE END PV */
 
@@ -58,7 +61,6 @@ void PeriphCommonClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_DMA_Init(void);
 static void MX_SPI1_Init(void);
-static void MX_USB_PCD_Init(void);
 static void MX_SPI2_Init(void);
 /* USER CODE BEGIN PFP */
 
@@ -102,15 +104,31 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_SPI1_Init();
-  MX_USB_PCD_Init();
   MX_SPI2_Init();
   if (MX_FATFS_Init() != APP_OK) {
     Error_Handler();
   }
+  MX_USB_Device_Init();
   /* USER CODE BEGIN 2 */
+	
+	/* USB Initialization */
+	// Use the hal_pcd library to init the usb (probably already done...)
+	// read the instructions first.
+//	hpcd_USB_FS.pData = usbData;
+//	HAL_PCD_Start(&hpcd_USB_FS);
+	
+	
+	/* ADS1299 Initialization */
 	ADS1299_Init(&hspi1, SPI1_NCS1_GPIO_Port, SPI1_NCS1_Pin, CLK_SEL_1_GPIO_Port, CLK_SEL_1_Pin, false, 
 	N_PWDN_1_GPIO_Port , N_PWDN_1_Pin, N_RESET_1_GPIO_Port, N_RESET_1_Pin);
   
+	/* activate conversion */
+	HAL_GPIO_WritePin(START_GPIO_Port, START_Pin, GPIO_PIN_SET);
+	
+	/* read data continousely*/
+//	ADS1299_RDATAC();
+
+	
 	uint8_t test;
 	
   /* USER CODE END 2 */
@@ -122,12 +140,8 @@ int main(void)
 		 // Setze den GPIO Pin auf HIGH (LED an)
         HAL_GPIO_TogglePin(Error_LED_1_GPIO_Port, Error_LED_1_Pin);
 				HAL_GPIO_TogglePin(Error_LED_2_GPIO_Port, Error_LED_2_Pin);
-				ADS1299_WriteRegister(GPIO, 0xF0);
-				HAL_Delay(500);
-				ADS1299_WriteRegister(GPIO, 0x00);
-				test = ADS1299_ReadRegister(GPIO);
-        // Warte für eine Sekunde (1000ms)
-        HAL_Delay(500);
+				
+//				CDC_Transmit_FS((uint8_t*)"hi", 2);
 		
     /* USER CODE END WHILE */
 
@@ -304,39 +318,6 @@ static void MX_SPI2_Init(void)
 }
 
 /**
-  * @brief USB Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_USB_PCD_Init(void)
-{
-
-  /* USER CODE BEGIN USB_Init 0 */
-
-  /* USER CODE END USB_Init 0 */
-
-  /* USER CODE BEGIN USB_Init 1 */
-
-  /* USER CODE END USB_Init 1 */
-  hpcd_USB_FS.Instance = USB;
-  hpcd_USB_FS.Init.dev_endpoints = 8;
-  hpcd_USB_FS.Init.speed = PCD_SPEED_FULL;
-  hpcd_USB_FS.Init.phy_itface = PCD_PHY_EMBEDDED;
-  hpcd_USB_FS.Init.Sof_enable = DISABLE;
-  hpcd_USB_FS.Init.low_power_enable = DISABLE;
-  hpcd_USB_FS.Init.lpm_enable = DISABLE;
-  hpcd_USB_FS.Init.battery_charging_enable = DISABLE;
-  if (HAL_PCD_Init(&hpcd_USB_FS) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN USB_Init 2 */
-
-  /* USER CODE END USB_Init 2 */
-
-}
-
-/**
   * Enable DMA controller clock
   */
 static void MX_DMA_Init(void)
@@ -385,8 +366,7 @@ static void MX_GPIO_Init(void)
                           |Error_LED_2_Pin|SPI1_NCS2_Pin|START_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, NDRDY_2_Pin|N_RESET_2_Pin|RF_Tx_LED_Pin|RF_Rx_LED_Pin
-                          |USB_Tx_LED_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, N_RESET_2_Pin|RF_Tx_LED_Pin|RF_Rx_LED_Pin|USB_Tx_LED_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOD, N_PWDN_1_Pin|SPI1_NCS1_Pin, GPIO_PIN_RESET);
@@ -409,10 +389,14 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : NDRDY_2_Pin N_RESET_2_Pin RF_Tx_LED_Pin RF_Rx_LED_Pin
-                           USB_Tx_LED_Pin */
-  GPIO_InitStruct.Pin = NDRDY_2_Pin|N_RESET_2_Pin|RF_Tx_LED_Pin|RF_Rx_LED_Pin
-                          |USB_Tx_LED_Pin;
+  /*Configure GPIO pin : N_DRDY_2_Pin */
+  GPIO_InitStruct.Pin = N_DRDY_2_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(N_DRDY_2_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : N_RESET_2_Pin RF_Tx_LED_Pin RF_Rx_LED_Pin USB_Tx_LED_Pin */
+  GPIO_InitStruct.Pin = N_RESET_2_Pin|RF_Tx_LED_Pin|RF_Rx_LED_Pin|USB_Tx_LED_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -426,8 +410,8 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin : N_DRDY_1_Pin */
   GPIO_InitStruct.Pin = N_DRDY_1_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(N_DRDY_1_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : N_PWDN_1_Pin SPI1_NCS1_Pin */
@@ -437,12 +421,22 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI1_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI1_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
 
+/*
+ * SPI TxCplt Callback
+ */
 void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi){
 		
 	if(hspi == &hspi1){
@@ -452,7 +446,43 @@ void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi){
 	if(hspi == &hspi2){
 		HAL_GPIO_WritePin(SPI2_NCS1_GPIO_Port, SPI2_NCS1_Pin, GPIO_PIN_SET);
 	}
-	
+	// timing requirements
+//	HAL_Delay(50);
+}
+
+
+/*
+ * SPI TxRxCplt Callback
+ */
+void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi){
+		if(hspi == &hspi1){
+		HAL_GPIO_WritePin(SPI1_NCS1_GPIO_Port, SPI1_NCS1_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(SPI1_NCS2_GPIO_Port, SPI1_NCS2_Pin, GPIO_PIN_SET);
+	}
+	if(hspi == &hspi2){
+		HAL_GPIO_WritePin(SPI2_NCS1_GPIO_Port, SPI2_NCS1_Pin, GPIO_PIN_SET);
+	}
+}
+
+
+/*
+ * SPI EXTI Callback
+ */
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
+		switch(GPIO_Pin){
+			case N_DRDY_1_Pin:
+//				ADS1299_WriteRegister(GPIO, 0xF0);	
+				CDC_Transmit_FS(ADS1299_RDATA(),32);
+//				CDC_Transmit_FS((uint8_t*)"hi", 2);
+				
+//				ADS1299_WriteRegister(GPIO, 0x00);
+				break;
+			case N_DRDY_2_Pin:
+				ADS1299_WriteRegister(GPIO, 0xF0);
+				break;
+			default:
+				break;
+		}
 }
 
 /* USER CODE END 4 */

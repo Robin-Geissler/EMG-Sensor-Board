@@ -5,8 +5,43 @@ SPI_HandleTypeDef *hspi_ads1299;
 GPIO_TypeDef *spi_ncs_port_ads1299;
 uint16_t spi_ncs_pin_ads1299;
 
-uint8_t sendDataBuff[20];
-uint8_t readDataBuff[20];
+uint8_t sendDataBuff[32];
+uint32_t readDataBuff[8];
+ 
+ 
+ 
+void ADS1299_WriteRegister(uint8_t reg, uint8_t value) {
+    sendDataBuff[0] = WREG | reg;
+		sendDataBuff[1] = 0x00;
+		sendDataBuff[2] = value;
+    HAL_GPIO_WritePin(spi_ncs_port_ads1299, spi_ncs_pin_ads1299, GPIO_PIN_RESET);
+		HAL_SPI_Transmit_DMA(hspi_ads1299, sendDataBuff, 3);
+		
+}
+ 
+uint8_t ADS1299_ReadRegister(uint8_t reg) {
+		/* send Read Command */
+		sendDataBuff[0] = RREG | reg;
+		sendDataBuff[1] = 0x01;
+		sendDataBuff[2] = 0x00;
+		sendDataBuff[3] = 0x00;
+    
+		HAL_GPIO_WritePin(spi_ncs_port_ads1299, spi_ncs_pin_ads1299, GPIO_PIN_RESET);
+		HAL_SPI_TransmitReceive_DMA(hspi_ads1299, sendDataBuff, readDataBuff, 4);
+
+		return readDataBuff[2];
+}
+
+uint8_t* ReadNRegisters(uint8_t n, uint8_t reg){
+		sendDataBuff[0] = RREG | reg;
+		sendDataBuff[1] = n;
+		sendDataBuff[2] = 0x00;
+	
+		HAL_GPIO_WritePin(spi_ncs_port_ads1299, spi_ncs_pin_ads1299, GPIO_PIN_RESET);
+    HAL_SPI_TransmitReceive_DMA(hspi_ads1299, sendDataBuff, readDataBuff, sizeof(sendDataBuff));
+    return readDataBuff;
+} 
+ 
  
 void ADS1299_Init(SPI_HandleTypeDef *hspi, GPIO_TypeDef *spi_ncs_port, uint16_t spi_ncs_pin,
 	GPIO_TypeDef *CLKSEL_GPIOx, uint16_t CLKSEL_GPIO_Pin, bool extCLK, 
@@ -15,12 +50,6 @@ void ADS1299_Init(SPI_HandleTypeDef *hspi, GPIO_TypeDef *spi_ncs_port, uint16_t 
 		spi_ncs_port_ads1299 = spi_ncs_port;
 		spi_ncs_pin_ads1299 = spi_ncs_pin;
 		
-	/***********das ist quark*********	
-//		/* set NRESET Pin */
-//		HAL_GPIO_WritePin(NRESET_GPIOx, NRESET_GPIO_Pin, GPIO_PIN_SET);
-//		/* set SPI CLK Pin */
-//		//HAL_GPIO_WritePin(CLKSEL_GPIOx, CLKSEL_GPIO_Pin, GPIO_PIN_SET);
-//		*************************/
 		
 		
 		/* set ext CLK Pin */
@@ -51,54 +80,47 @@ void ADS1299_Init(SPI_HandleTypeDef *hspi, GPIO_TypeDef *spi_ncs_port, uint16_t 
 		/* Wait for at least 18 cycles = 18 * 666ns = 12us */
 		HAL_Delay(2);
 		
-		/* no speciffic reason for this, can be deleted */
-//		HAL_Delay(1000);
-//		sendDataBuff[0] = STANDBY;
-//		HAL_SPI_Transmit_DMA(hspi_ads1299, sendDataBuff, 1);
-
-		/* send ads1299 RESET command */
-//		sendDataBuff[0] = RESET;
-//		HAL_GPIO_WritePin(spi_ncs_port_ads1299, spi_ncs_pin_ads1299, GPIO_PIN_RESET);
-//		HAL_SPI_Transmit_DMA(hspi_ads1299, sendDataBuff, 1);
-		// GPIO Reset is done in DMA Interrupt
-		
-    // z.B. ADS1299_WriteRegister(ADS1299_REG_CONFIG1, 0x96);
-}
- 
-void ADS1299_ReadData(uint8_t* buffer) {
-    // Lesen Sie hier die Daten vom ADS1299
-    // z.B. HAL_SPI_Receive(&ADS1299_SPI_HANDLE, buffer, 1, HAL_MAX_DELAY);
-}
- 
-void ADS1299_WriteRegister(uint8_t reg, uint8_t value) {
-    sendDataBuff[0] = WREG | reg;
-		sendDataBuff[1] = 0x00;
-		sendDataBuff[2] = value;
+		/* Set device into SDATAC Mode so that registers can be read and written */
+		sendDataBuff[0] = SDATAC;
     HAL_GPIO_WritePin(spi_ncs_port_ads1299, spi_ncs_pin_ads1299, GPIO_PIN_RESET);
-		HAL_SPI_Transmit_DMA(hspi_ads1299, sendDataBuff, 3);
+		HAL_SPI_Transmit_DMA(hspi_ads1299, sendDataBuff, 1);
+		
+		/* Activate internal reference and wait to settle */
+		ADS1299_WriteRegister(CONFIG3, 0xE0);
+		HAL_Delay(100);
+		
+		/* Configure for test */
+		ADS1299_WriteRegister(CONFIG1, 0x96);
+		ADS1299_WriteRegister(CONFIG3, 0xC0);
+		ADS1299_WriteRegister(CH1SET, 0x01);
+		ADS1299_WriteRegister(CH2SET, 0x01);
+		ADS1299_WriteRegister(CH3SET, 0x01);
+		ADS1299_WriteRegister(CH4SET, 0x01);
+		ADS1299_WriteRegister(CH5SET, 0x01);
+		ADS1299_WriteRegister(CH6SET, 0x01);
+		ADS1299_WriteRegister(CH7SET, 0x01);
+		ADS1299_WriteRegister(CH8SET, 0x01);
+		
+		
 		
 }
+	
+
  
-uint8_t ADS1299_ReadRegister(uint8_t reg) {
-		/* send Read Command */
-		sendDataBuff[0] = RREG | reg;
-		sendDataBuff[1] = 0x01;
-		sendDataBuff[2] = 0x00;
-		sendDataBuff[3] = 0x00;
-    
-		HAL_GPIO_WritePin(spi_ncs_port_ads1299, spi_ncs_pin_ads1299, GPIO_PIN_RESET);
-		HAL_SPI_TransmitReceive_DMA(hspi_ads1299, sendDataBuff, readDataBuff, 4);
-    
-		return readDataBuff[2];
+void ADS1299_RDATAC() {
+  sendDataBuff[0] = RDATAC;
+  HAL_GPIO_WritePin(spi_ncs_port_ads1299, spi_ncs_pin_ads1299, GPIO_PIN_RESET);  
+	HAL_SPI_Transmit_DMA(hspi_ads1299, sendDataBuff, 1);
 }
 
-uint8_t* ReadNRegisters(uint8_t n, uint8_t reg){
-		sendDataBuff[0] = RREG | reg;
-		sendDataBuff[1] = n;
-		sendDataBuff[2] = 0x00;
-	
-		HAL_GPIO_WritePin(spi_ncs_port_ads1299, spi_ncs_pin_ads1299, GPIO_PIN_RESET);
-    HAL_SPI_TransmitReceive_DMA(hspi_ads1299, sendDataBuff, readDataBuff, sizeof(sendDataBuff));
-    return readDataBuff;
+uint8_t *ADS1299_RDATA(){
+	sendDataBuff[0] = RDATA;
+	sendDataBuff[1] = 0;
+	sendDataBuff[2] = 0;
+  HAL_GPIO_WritePin(spi_ncs_port_ads1299, spi_ncs_pin_ads1299, GPIO_PIN_RESET);  
+	HAL_SPI_TransmitReceive_DMA(hspi_ads1299, sendDataBuff, readDataBuff, 29);
+	return readDataBuff;
 }
+ 
+
 
