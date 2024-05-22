@@ -7,6 +7,7 @@ uint16_t spi_ncs_pin_ads1299;
 
 uint8_t sendDataBuff[32];
 uint8_t readDataBuff[32];
+uint8_t debugData[20];
  
  
  
@@ -16,18 +17,20 @@ void ADS1299_WriteRegister(uint8_t reg, uint8_t value) {
 		sendDataBuff[2] = value;
     HAL_GPIO_WritePin(spi_ncs_port_ads1299, spi_ncs_pin_ads1299, GPIO_PIN_RESET);
 		HAL_SPI_Transmit_DMA(hspi_ads1299, sendDataBuff, 3);
+		HAL_Delay(100);
 		
 }
  
 uint8_t ADS1299_ReadRegister(uint8_t reg) {
 		/* send Read Command */
 		sendDataBuff[0] = RREG | reg;
-		sendDataBuff[1] = 0x01;
+		sendDataBuff[1] = 0x00;
 		sendDataBuff[2] = 0x00;
 		sendDataBuff[3] = 0x00;
     
 		HAL_GPIO_WritePin(spi_ncs_port_ads1299, spi_ncs_pin_ads1299, GPIO_PIN_RESET);
 		HAL_SPI_TransmitReceive_DMA(hspi_ads1299, sendDataBuff, readDataBuff, 4);
+		HAL_Delay(100);
 
 		return readDataBuff[2];
 }
@@ -92,17 +95,28 @@ void ADS1299_Init(SPI_HandleTypeDef *hspi, GPIO_TypeDef *spi_ncs_port, uint16_t 
 		/* Configure for test */
 		ADS1299_WriteRegister(CONFIG1, 0xF4);
 		ADS1299_WriteRegister(CONFIG2, 0xD4);
+		HAL_Delay(100);
 		ADS1299_WriteRegister(CH1SET, 0x55);
 		ADS1299_WriteRegister(CH2SET, 0x55);
 		ADS1299_WriteRegister(CH3SET, 0x55);
 		ADS1299_WriteRegister(CH4SET, 0x55);
-		ADS1299_WriteRegister(CH5SET, 0x55);
-		ADS1299_WriteRegister(CH6SET, 0x55);
-		ADS1299_WriteRegister(CH7SET, 0x55);
-		ADS1299_WriteRegister(CH8SET, 0x55);
+		ADS1299_WriteRegister(CH5SET, 0xD5);
+		ADS1299_WriteRegister(CH6SET, 0xD5);
+		ADS1299_WriteRegister(CH7SET, 0xD5);
+		ADS1299_WriteRegister(CH8SET, 0xD5);
 		
-		
-		
+		HAL_Delay(200);
+		debugData[0] = ADS1299_ReadRegister(CH1SET);
+		debugData[1] = ADS1299_ReadRegister(CH2SET);
+		debugData[2] = ADS1299_ReadRegister(CH3SET);
+		debugData[3] = ADS1299_ReadRegister(CH4SET);
+		debugData[4] = ADS1299_ReadRegister(CH5SET);
+		debugData[5] = ADS1299_ReadRegister(CH6SET);
+		debugData[6] = ADS1299_ReadRegister(CH7SET);
+		debugData[7] = ADS1299_ReadRegister(CH8SET);
+		debugData[8] = ADS1299_ReadRegister(CONFIG1);
+		debugData[9] = ADS1299_ReadRegister(CONFIG2);
+		debugData[10] = ADS1299_ReadRegister(CONFIG3);
 }
 	
 
@@ -124,7 +138,8 @@ uint8_t *ADS1299_RDATA(){
  
 void ADS1299_Convert_Data(uint8_t *input, uint32_t *output){
 	for(int i = 0; i < 8; i++){
-		output[i] = (input[3 + i*3]) << 16| (input[3+ i*3 + 1] << 8) | (input[3 + i * 3 + 2]);
+		/* data starts at 4 because first byte is send byte, byte 1,2,3 are status bytes*/
+		output[i] = (input[4 + i*3] << 16) | (input[4+ i*3 + 1] << 8) | (input[4 + i * 3 + 2]);
 	}
 }
 
