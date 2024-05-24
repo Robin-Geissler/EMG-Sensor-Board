@@ -93,17 +93,32 @@ void ADS1299_Init(SPI_HandleTypeDef *hspi, GPIO_TypeDef *spi_ncs_port, uint16_t 
 		HAL_Delay(100);
 		
 		/* Configure for test */
+		/*
 		ADS1299_WriteRegister(CONFIG1, 0xF4);
-		ADS1299_WriteRegister(CONFIG2, 0xD4);
+		ADS1299_WriteRegister(CONFIG2, 0xD0);
 		HAL_Delay(100);
-		ADS1299_WriteRegister(CH1SET, 0x55);
-		ADS1299_WriteRegister(CH2SET, 0x55);
-		ADS1299_WriteRegister(CH3SET, 0x55);
-		ADS1299_WriteRegister(CH4SET, 0x55);
-		ADS1299_WriteRegister(CH5SET, 0xD5);
-		ADS1299_WriteRegister(CH6SET, 0xD5);
-		ADS1299_WriteRegister(CH7SET, 0xD5);
-		ADS1299_WriteRegister(CH8SET, 0xD5);
+		ADS1299_WriteRegister(CH1SET, 0x05);
+		ADS1299_WriteRegister(CH2SET, 0x15);
+		ADS1299_WriteRegister(CH3SET, 0x25);
+		ADS1299_WriteRegister(CH4SET, 0x35);
+		ADS1299_WriteRegister(CH5SET, 0x45);
+		ADS1299_WriteRegister(CH6SET, 0x55);
+		ADS1299_WriteRegister(CH7SET, 0x65);
+		ADS1299_WriteRegister(CH8SET, 0x05);
+		*/
+		
+		/* Configure for measurement */
+		ADS1299_WriteRegister(CONFIG1, 0xF4);
+		ADS1299_WriteRegister(CONFIG2, 0xC4);
+		HAL_Delay(100);
+		ADS1299_WriteRegister(CH1SET, 0x60);
+		ADS1299_WriteRegister(CH2SET, 0x50);
+		ADS1299_WriteRegister(CH3SET, 0x40);
+		ADS1299_WriteRegister(CH4SET, 0x00);
+		ADS1299_WriteRegister(CH5SET, 0x00);
+		ADS1299_WriteRegister(CH6SET, 0x00);
+		ADS1299_WriteRegister(CH7SET, 0x00);
+		ADS1299_WriteRegister(CH8SET, 0x00);
 		
 		HAL_Delay(200);
 		debugData[0] = ADS1299_ReadRegister(CH1SET);
@@ -136,10 +151,15 @@ uint8_t *ADS1299_RDATA(){
 	return readDataBuff;
 }
  
-void ADS1299_Convert_Data(uint8_t *input, uint32_t *output){
+void ADS1299_Convert_Data(uint8_t *input, int32_t *output){
 	for(int i = 0; i < 8; i++){
 		/* data starts at 4 because first byte is send byte, byte 1,2,3 are status bytes*/
-		output[i] = (input[4 + i*3] << 16) | (input[4+ i*3 + 1] << 8) | (input[4 + i * 3 + 2]);
+		/* first bit is ingored due to Two´s compliment format*/
+		output[i] = ((input[4 + i*3] & 0x7F) << 16) | (input[4+ i*3 + 1] << 8) | (input[4 + i * 3 + 2]);
+		/* if first bit was set, substract Val Max to get the right 2´s compliment value*/
+		if(input[4 + i*3] >= 0xF0){
+			output[i] = output[i] - 0x800000;
+		}
 	}
 }
 

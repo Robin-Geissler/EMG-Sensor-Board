@@ -50,7 +50,8 @@ DMA_HandleTypeDef hdma_spi1_tx;
 DMA_HandleTypeDef hdma_spi1_rx;
 
 /* USER CODE BEGIN PV */
-uint32_t dataReading[8];
+uint8_t *dataReading;
+int32_t dataProcessed[8];
 
 /* USER CODE END PV */
 
@@ -458,6 +459,8 @@ void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi){
 		if(hspi == &hspi1){
 		HAL_GPIO_WritePin(SPI1_NCS1_GPIO_Port, SPI1_NCS1_Pin, GPIO_PIN_SET);
 		HAL_GPIO_WritePin(SPI1_NCS2_GPIO_Port, SPI1_NCS2_Pin, GPIO_PIN_SET);
+		ADS1299_Convert_Data(dataReading,dataProcessed);
+		CDC_Transmit_FS((uint8_t*)dataProcessed,32);
 	}
 	if(hspi == &hspi2){
 		HAL_GPIO_WritePin(SPI2_NCS1_GPIO_Port, SPI2_NCS1_Pin, GPIO_PIN_SET);
@@ -472,8 +475,9 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 		switch(GPIO_Pin){
 			case N_DRDY_1_Pin:
 //				ADS1299_WriteRegister(GPIO, 0xF0);	
-				ADS1299_Convert_Data(ADS1299_RDATA(),dataReading);
-				CDC_Transmit_FS(dataReading,32);
+				dataReading = ADS1299_RDATA();	
+			
+				
 //				CDC_Transmit_FS((uint8_t*)"hi", 2);
 				
 //				ADS1299_WriteRegister(GPIO, 0x00);
