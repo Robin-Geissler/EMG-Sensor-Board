@@ -52,6 +52,7 @@ DMA_HandleTypeDef hdma_spi1_rx;
 /* USER CODE BEGIN PV */
 uint8_t *dataReading;
 int32_t dataProcessed[8];
+int32_t adc_offset = 0;
 
 /* USER CODE END PV */
 
@@ -128,6 +129,10 @@ int main(void)
 	/* read data continousely*/
 //	ADS1299_RDATAC();
 
+	/* Calibrate ADC */
+	HAL_Delay(100);
+	/* Set Offset */
+	adc_offset = dataProcessed[0];
 
 	
 	
@@ -297,11 +302,11 @@ static void MX_SPI2_Init(void)
   hspi2.Instance = SPI2;
   hspi2.Init.Mode = SPI_MODE_MASTER;
   hspi2.Init.Direction = SPI_DIRECTION_2LINES;
-  hspi2.Init.DataSize = SPI_DATASIZE_4BIT;
+  hspi2.Init.DataSize = SPI_DATASIZE_8BIT;
   hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi2.Init.NSS = SPI_NSS_SOFT;
-  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4;
+  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_32;
   hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;

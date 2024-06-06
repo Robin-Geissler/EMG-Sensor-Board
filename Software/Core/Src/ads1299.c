@@ -7,7 +7,11 @@ uint16_t spi_ncs_pin_ads1299;
 
 uint8_t sendDataBuff[32];
 uint8_t readDataBuff[32];
-uint8_t debugData[20];
+int32_t debugData[200];
+int32_t debugData2[200];
+uint32_t debugData3[200];
+uint32_t debugData4[200];
+int iDebug = 0;
  
  
  
@@ -89,8 +93,12 @@ void ADS1299_Init(SPI_HandleTypeDef *hspi, GPIO_TypeDef *spi_ncs_port, uint16_t 
 		HAL_SPI_Transmit_DMA(hspi_ads1299, sendDataBuff, 1);
 		
 		/* Activate internal reference and wait to settle */
-		ADS1299_WriteRegister(CONFIG3, 0xE0);
+		//ADS1299_WriteRegister(CONFIG3, 0xE0);
+		ADS1299_WriteRegister(CONFIG3, 0xFC);
 		HAL_Delay(100);
+		
+		/* Single-shot-mode*/
+		//ADS1299_WriteRegister(CONFIG4, 0x08);
 		
 		/* Configure for test */
 		/*
@@ -112,13 +120,17 @@ void ADS1299_Init(SPI_HandleTypeDef *hspi, GPIO_TypeDef *spi_ncs_port, uint16_t 
 		ADS1299_WriteRegister(CONFIG2, 0xC4);
 		HAL_Delay(100);
 		ADS1299_WriteRegister(CH1SET, 0x60);
-		ADS1299_WriteRegister(CH2SET, 0x50);
-		ADS1299_WriteRegister(CH3SET, 0x40);
-		ADS1299_WriteRegister(CH4SET, 0x00);
+		ADS1299_WriteRegister(CH2SET, 0x60);
+		ADS1299_WriteRegister(CH3SET, 0x60);
+		ADS1299_WriteRegister(CH4SET, 0x62);
 		ADS1299_WriteRegister(CH5SET, 0x00);
 		ADS1299_WriteRegister(CH6SET, 0x00);
 		ADS1299_WriteRegister(CH7SET, 0x00);
 		ADS1299_WriteRegister(CH8SET, 0x00);
+		
+		ADS1299_WriteRegister(BIAS_SENSP, 0x01);
+		ADS1299_WriteRegister(BIAS_SENSN, 0x01);
+		
 		
 		HAL_Delay(200);
 		debugData[0] = ADS1299_ReadRegister(CH1SET);
@@ -130,8 +142,8 @@ void ADS1299_Init(SPI_HandleTypeDef *hspi, GPIO_TypeDef *spi_ncs_port, uint16_t 
 		debugData[6] = ADS1299_ReadRegister(CH7SET);
 		debugData[7] = ADS1299_ReadRegister(CH8SET);
 		debugData[8] = ADS1299_ReadRegister(CONFIG1);
-		debugData[9] = ADS1299_ReadRegister(CONFIG2);
-		debugData[10] = ADS1299_ReadRegister(CONFIG3);
+		debugData[9] = ADS1299_ReadRegister(MISC1);
+		debugData[10] = ADS1299_ReadRegister(MISC1);
 }
 	
 
@@ -152,15 +164,18 @@ uint8_t *ADS1299_RDATA(){
 }
  
 void ADS1299_Convert_Data(uint8_t *input, int32_t *output){
+
 	for(int i = 0; i < 8; i++){
 		/* data starts at 4 because first byte is send byte, byte 1,2,3 are status bytes*/
 		/* first bit is ingored due to Two´s compliment format*/
 		output[i] = ((input[4 + i*3] & 0x7F) << 16) | (input[4+ i*3 + 1] << 8) | (input[4 + i * 3 + 2]);
 		/* if first bit was set, substract Val Max to get the right 2´s compliment value*/
-		if(input[4 + i*3] >= 0xF0){
+		if(input[4 + i*3] >= 0x80){
 			output[i] = output[i] - 0x800000;
-		}
+			}
 	}
 }
+
+
 
 
