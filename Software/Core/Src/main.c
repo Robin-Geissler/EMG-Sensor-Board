@@ -26,6 +26,8 @@
 #include <string.h>
 #include "ads1299.h"
 #include "usbd_cdc_if.h"
+#include "ff_gen_drv.h"
+#include "sd_diskio.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -35,7 +37,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define BUFFER1 0
+#define BUFFER2 1
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -44,15 +47,43 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+RTC_HandleTypeDef hrtc;
+
 SPI_HandleTypeDef hspi1;
 SPI_HandleTypeDef hspi2;
 DMA_HandleTypeDef hdma_spi1_tx;
 DMA_HandleTypeDef hdma_spi1_rx;
 
+TIM_HandleTypeDef htim1;
+TIM_HandleTypeDef htim2;
+
 /* USER CODE BEGIN PV */
 uint8_t *dataReading;
 int32_t dataProcessed[8];
 int32_t adc_offset = 0;
+char adc_data_str_buff1[60000];
+char adc_data_str_buff2[60000];
+char adc_data_str[200];
+uint32_t adc_data_count = 0;
+uint8_t WRITEBUFFER = BUFFER1;
+uint8_t LOCK1 = 0;
+uint8_t FULL1 = 0;
+uint8_t LOCK2 = 0;
+uint8_t FULL2 = 0;
+uint8_t RUN = 0;
+uint8_t DEMOUNT = 0;
+uint8_t MOUNT = 0;
+uint32_t timeMeasure[10];
+uint32_t buff_i = 0;
+
+/* SD Card*/
+FRESULT res;
+FIL myFile;
+
+RTC_TimeTypeDef stime;
+RTC_DateTypeDef sdate;
+
+char log_file[32] = "Log.csv";
 
 /* USER CODE END PV */
 
@@ -63,7 +94,15 @@ static void MX_GPIO_Init(void);
 static void MX_DMA_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_SPI2_Init(void);
+static void MX_RTC_Init(void);
+static void MX_TIM2_Init(void);
+static void MX_TIM1_Init(void);
 /* USER CODE BEGIN PFP */
+
+int16_t FS_FILE_Write(char *data);
+FRESULT sd_mount(void);
+FRESULT sd_unmount(void);
+void buttonTask(void);
 
 /* USER CODE END PFP */
 
@@ -110,14 +149,20 @@ int main(void)
     Error_Handler();
   }
   MX_USB_Device_Init();
+  MX_RTC_Init();
+  MX_TIM2_Init();
+  MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
 	
+	BSP_SD_Init();
 	/* USB Initialization */
 	// Use the hal_pcd library to init the usb (probably already done...)
 	// read the instructions first.
 //	hpcd_USB_FS.pData = usbData;
 //	HAL_PCD_Start(&hpcd_USB_FS);
 	
+	/* Enable Timer for LEDs */
+	HAL_TIM_OC_Start(&htim1, 1);
 	
 	/* ADS1299 Initialization */
 	ADS1299_Init(&hspi1, SPI1_NCS1_GPIO_Port, SPI1_NCS1_Pin, CLK_SEL_1_GPIO_Port, CLK_SEL_1_Pin, false, 
@@ -142,11 +187,60 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
-  {
-		 // Setze den GPIO Pin auf HIGH (LED an)
-        HAL_GPIO_TogglePin(Error_LED_1_GPIO_Port, Error_LED_1_Pin);
-				HAL_GPIO_TogglePin(Error_LED_2_GPIO_Port, Error_LED_2_Pin);
+  {		
+			if(MOUNT){
+				 /* Init Write file*/
+				// Check if SD card is mount
+				res = sd_mount();
+				if(res != FR_OK) {
+					HAL_GPIO_WritePin(Error_LED_1_GPIO_Port, Error_LED_1_Pin, GPIO_PIN_SET);
+					
+				}
 				
+				// try to open file in append and write mode
+				res = f_open(&myFile, log_file, FA_OPEN_APPEND | FA_WRITE);
+				if(res != FR_OK) {
+					HAL_GPIO_WritePin(Error_LED_1_GPIO_Port, Error_LED_1_Pin, GPIO_PIN_SET);
+					sd_unmount();
+				}
+				
+				/* Mount successfull, deactivate FLAG*/
+				MOUNT = 0;
+				FS_FILE_Write("timestamp;value1;value2;value3;value4;value5;value6;value7;value8\n");
+			}
+		
+			if(RUN){
+				if(FULL1){
+				/* Mark start write */
+				HAL_GPIO_WritePin(SPI_Tx_LED_GPIO_Port, SPI_Tx_LED_Pin, GPIO_PIN_SET);
+				FS_FILE_Write(adc_data_str_buff1);
+				strncpy(adc_data_str_buff1, "",1);
+				FULL1 = 0;
+				/* Mark end write */
+				HAL_GPIO_WritePin(SPI_Tx_LED_GPIO_Port, SPI_Tx_LED_Pin, GPIO_PIN_RESET);
+				}
+				if(FULL2){
+				/* Mark end write */
+  			HAL_GPIO_WritePin(SPI_Tx_LED_GPIO_Port,  SPI_Tx_LED_Pin, GPIO_PIN_SET);
+				FS_FILE_Write(adc_data_str_buff2);
+				strncpy(adc_data_str_buff2, "",1);
+				FULL2 = 0;
+					/* Mark end write */
+				HAL_GPIO_WritePin(SPI_Tx_LED_GPIO_Port, SPI_Tx_LED_Pin, GPIO_PIN_RESET);
+				}
+			}
+			
+			if(DEMOUNT){
+				/* close file */
+				res = f_close(&myFile);
+	
+				/* Unmount SD Card*/
+				res = sd_unmount();
+				
+				/* DEMOUNT successfull, deactivate FLAG */
+				DEMOUNT = 0;
+			}
+		
 //				CDC_Transmit_FS((uint8_t*)"hi", 2);
 		
     /* USER CODE END WHILE */
@@ -244,6 +338,71 @@ void PeriphCommonClock_Config(void)
 }
 
 /**
+  * @brief RTC Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_RTC_Init(void)
+{
+
+  /* USER CODE BEGIN RTC_Init 0 */
+
+  /* USER CODE END RTC_Init 0 */
+
+  RTC_TimeTypeDef sTime = {0};
+  RTC_DateTypeDef sDate = {0};
+
+  /* USER CODE BEGIN RTC_Init 1 */
+
+  /* USER CODE END RTC_Init 1 */
+
+  /** Initialize RTC Only
+  */
+  hrtc.Instance = RTC;
+  hrtc.Init.HourFormat = RTC_HOURFORMAT_24;
+  hrtc.Init.AsynchPrediv = 31;
+  hrtc.Init.SynchPrediv = 1023;
+  hrtc.Init.OutPut = RTC_OUTPUT_DISABLE;
+  hrtc.Init.OutPutPolarity = RTC_OUTPUT_POLARITY_HIGH;
+  hrtc.Init.OutPutType = RTC_OUTPUT_TYPE_OPENDRAIN;
+  hrtc.Init.OutPutRemap = RTC_OUTPUT_REMAP_NONE;
+  if (HAL_RTC_Init(&hrtc) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /* USER CODE BEGIN Check_RTC_BKUP */
+	
+  /* USER CODE END Check_RTC_BKUP */
+
+  /** Initialize RTC and set the Time and Date
+  */
+  sTime.Hours = 0x0;
+  sTime.Minutes = 0x0;
+  sTime.Seconds = 0x0;
+  sTime.SubSeconds = 0x0;
+  sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
+  sTime.StoreOperation = RTC_STOREOPERATION_RESET;
+  if (HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BCD) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sDate.WeekDay = RTC_WEEKDAY_MONDAY;
+  sDate.Month = RTC_MONTH_JANUARY;
+  sDate.Date = 0x1;
+  sDate.Year = 0x0;
+
+  if (HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BCD) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN RTC_Init 2 */
+	
+  /* USER CODE END RTC_Init 2 */
+
+}
+
+/**
   * @brief SPI1 Initialization Function
   * @param None
   * @retval None
@@ -306,13 +465,13 @@ static void MX_SPI2_Init(void)
   hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi2.Init.NSS = SPI_NSS_SOFT;
-  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_32;
+  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4;
   hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
   hspi2.Init.CRCPolynomial = 7;
   hspi2.Init.CRCLength = SPI_CRC_LENGTH_DATASIZE;
-  hspi2.Init.NSSPMode = SPI_NSS_PULSE_ENABLE;
+  hspi2.Init.NSSPMode = SPI_NSS_PULSE_DISABLE;
   if (HAL_SPI_Init(&hspi2) != HAL_OK)
   {
     Error_Handler();
@@ -320,6 +479,129 @@ static void MX_SPI2_Init(void)
   /* USER CODE BEGIN SPI2_Init 2 */
 
   /* USER CODE END SPI2_Init 2 */
+
+}
+
+/**
+  * @brief TIM1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM1_Init(void)
+{
+
+  /* USER CODE BEGIN TIM1_Init 0 */
+
+  /* USER CODE END TIM1_Init 0 */
+
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+  TIM_OC_InitTypeDef sConfigOC = {0};
+  TIM_BreakDeadTimeConfigTypeDef sBreakDeadTimeConfig = {0};
+
+  /* USER CODE BEGIN TIM1_Init 1 */
+
+  /* USER CODE END TIM1_Init 1 */
+  htim1.Instance = TIM1;
+  htim1.Init.Prescaler = 32000;
+  htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim1.Init.Period = 999;
+  htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim1.Init.RepetitionCounter = 0;
+  htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_OC_Init(&htim1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterOutputTrigger2 = TIM_TRGO2_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim1, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sConfigOC.OCMode = TIM_OCMODE_TIMING;
+  sConfigOC.Pulse = 999;
+  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+  sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
+  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+  sConfigOC.OCIdleState = TIM_OCIDLESTATE_RESET;
+  sConfigOC.OCNIdleState = TIM_OCNIDLESTATE_RESET;
+  if (HAL_TIM_OC_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sBreakDeadTimeConfig.OffStateRunMode = TIM_OSSR_DISABLE;
+  sBreakDeadTimeConfig.OffStateIDLEMode = TIM_OSSI_DISABLE;
+  sBreakDeadTimeConfig.LockLevel = TIM_LOCKLEVEL_OFF;
+  sBreakDeadTimeConfig.DeadTime = 0;
+  sBreakDeadTimeConfig.BreakState = TIM_BREAK_DISABLE;
+  sBreakDeadTimeConfig.BreakPolarity = TIM_BREAKPOLARITY_HIGH;
+  sBreakDeadTimeConfig.BreakFilter = 0;
+  sBreakDeadTimeConfig.BreakAFMode = TIM_BREAK_AFMODE_INPUT;
+  sBreakDeadTimeConfig.Break2State = TIM_BREAK2_DISABLE;
+  sBreakDeadTimeConfig.Break2Polarity = TIM_BREAK2POLARITY_HIGH;
+  sBreakDeadTimeConfig.Break2Filter = 0;
+  sBreakDeadTimeConfig.Break2AFMode = TIM_BREAK_AFMODE_INPUT;
+  sBreakDeadTimeConfig.AutomaticOutput = TIM_AUTOMATICOUTPUT_DISABLE;
+  if (HAL_TIMEx_ConfigBreakDeadTime(&htim1, &sBreakDeadTimeConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM1_Init 2 */
+
+  /* USER CODE END TIM1_Init 2 */
+
+}
+
+/**
+  * @brief TIM2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM2_Init(void)
+{
+
+  /* USER CODE BEGIN TIM2_Init 0 */
+
+  /* USER CODE END TIM2_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_SlaveConfigTypeDef sSlaveConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM2_Init 1 */
+
+  /* USER CODE END TIM2_Init 1 */
+  htim2.Instance = TIM2;
+  htim2.Init.Prescaler = 32000;
+  htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim2.Init.Period = 999;
+  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+  if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sSlaveConfig.SlaveMode = TIM_SLAVEMODE_DISABLE;
+  sSlaveConfig.InputTrigger = TIM_TS_ITR0;
+  if (HAL_TIM_SlaveConfigSynchro(&htim2, &sSlaveConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_OC1;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM2_Init 2 */
+
+  /* USER CODE END TIM2_Init 2 */
 
 }
 
@@ -364,12 +646,14 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, CLK_SEL_2_Pin|SPI2_NCS1_Pin|USB_Rx_LED_Pin|CLK_SEL_1_Pin
-                          |N_RESET_1_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOC, CLK_SEL_2_Pin|USB_Rx_LED_Pin|CLK_SEL_1_Pin|N_RESET_1_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, N_PWDN_2_Pin|SPI_Tx_LED_Pin|SPI_Rx_LED_Pin|Error_LED_1_Pin
                           |Error_LED_2_Pin|SPI1_NCS2_Pin|START_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(SPI2_NCS1_GPIO_Port, SPI2_NCS1_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, N_RESET_2_Pin|RF_Tx_LED_Pin|RF_Rx_LED_Pin|USB_Tx_LED_Pin, GPIO_PIN_RESET);
@@ -377,10 +661,8 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOD, N_PWDN_1_Pin|SPI1_NCS1_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : CLK_SEL_2_Pin SPI2_NCS1_Pin USB_Rx_LED_Pin CLK_SEL_1_Pin
-                           N_RESET_1_Pin */
-  GPIO_InitStruct.Pin = CLK_SEL_2_Pin|SPI2_NCS1_Pin|USB_Rx_LED_Pin|CLK_SEL_1_Pin
-                          |N_RESET_1_Pin;
+  /*Configure GPIO pins : CLK_SEL_2_Pin USB_Rx_LED_Pin CLK_SEL_1_Pin N_RESET_1_Pin */
+  GPIO_InitStruct.Pin = CLK_SEL_2_Pin|USB_Rx_LED_Pin|CLK_SEL_1_Pin|N_RESET_1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -395,6 +677,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
+  /*Configure GPIO pin : SPI2_NCS1_Pin */
+  GPIO_InitStruct.Pin = SPI2_NCS1_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(SPI2_NCS1_GPIO_Port, &GPIO_InitStruct);
+
   /*Configure GPIO pin : N_DRDY_2_Pin */
   GPIO_InitStruct.Pin = N_DRDY_2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
@@ -407,6 +696,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : Button_Pin */
+  GPIO_InitStruct.Pin = Button_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  HAL_GPIO_Init(Button_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : BAT_STAT_Pin */
   GPIO_InitStruct.Pin = BAT_STAT_Pin;
@@ -431,6 +726,9 @@ static void MX_GPIO_Init(void)
   HAL_NVIC_SetPriority(EXTI1_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(EXTI1_IRQn);
 
+  HAL_NVIC_SetPriority(EXTI9_5_IRQn, 15, 0);
+  HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+
   HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
@@ -450,7 +748,7 @@ void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi){
 		HAL_GPIO_WritePin(SPI1_NCS2_GPIO_Port, SPI1_NCS2_Pin, GPIO_PIN_SET);
 	}
 	if(hspi == &hspi2){
-		HAL_GPIO_WritePin(SPI2_NCS1_GPIO_Port, SPI2_NCS1_Pin, GPIO_PIN_SET);
+//		HAL_GPIO_WritePin(SPI2_NCS1_GPIO_Port, SPI2_NCS1_Pin, GPIO_PIN_SET);
 	}
 	// timing requirements
 //	HAL_Delay(50);
@@ -462,13 +760,74 @@ void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi){
  */
 void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi){
 		if(hspi == &hspi1){
-		HAL_GPIO_WritePin(SPI1_NCS1_GPIO_Port, SPI1_NCS1_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(SPI1_NCS2_GPIO_Port, SPI1_NCS2_Pin, GPIO_PIN_SET);
-		ADS1299_Convert_Data(dataReading,dataProcessed);
-		CDC_Transmit_FS((uint8_t*)dataProcessed,32);
-	}
+			
+
+			HAL_GPIO_WritePin(SPI1_NCS1_GPIO_Port, SPI1_NCS1_Pin, GPIO_PIN_SET);
+//			HAL_GPIO_WritePin(SPI1_NCS2_GPIO_Port, SPI1_NCS2_Pin, GPIO_PIN_SET);
+			ADS1299_Convert_Data(dataReading,dataProcessed);
+			CDC_Transmit_FS((uint8_t*)dataProcessed,32);
+
+			
+			/* if not active running data dosent need to be saved*/
+			if(!RUN){
+				return;
+			}
+			
+			HAL_RTC_GetTime(&hrtc, &stime, RTC_FORMAT_BCD);
+			HAL_RTC_GetDate(&hrtc, &sdate,RTC_FORMAT_BCD);
+			
+			
+			/* Write into Buffer. Write either Buffer 1 or Buffer 2*/	
+			/* Write to Buffer 1 */
+			if(WRITEBUFFER == BUFFER1){
+				sprintf(adc_data_str_buff1 + buff_i,"%x-%x-%x-%03d;%d;%d;%d;%d;%d;%d;%d;%d \n", stime.Hours, stime.Minutes, stime.Seconds, 999 - (stime.SubSeconds * 1000 / 1024), dataProcessed[0],dataProcessed[1],dataProcessed[2],dataProcessed[3],dataProcessed[4],dataProcessed[5],dataProcessed[6],dataProcessed[7]);
+				do{
+					buff_i++;
+				}while(adc_data_str_buff1[buff_i] != NULL);
+			}
+			
+			
+			/* Write to Buffer 2 */
+			if(WRITEBUFFER == BUFFER2){
+			sprintf(adc_data_str_buff2 + buff_i,"%x-%x-%x-%03d;%d;%d;%d;%d;%d;%d;%d;%d \n", stime.Hours, stime.Minutes, stime.Seconds, 999 - (stime.SubSeconds * 1000 / 1024), dataProcessed[0],dataProcessed[1],dataProcessed[2],dataProcessed[3],dataProcessed[4],dataProcessed[5],dataProcessed[6],dataProcessed[7]);
+			do{
+				buff_i++;
+			}while(adc_data_str_buff2[buff_i] != NULL);
+			}
+			
+			adc_data_count++;
+			
+	
+			/* if a Buffer is Full (300 Values) switch the Buffer*/
+			if(adc_data_count >= 300){
+				/* Mark current Buffer as FULL*/
+				if(WRITEBUFFER == BUFFER1){
+					FULL1 = 1;
+				}
+				if(WRITEBUFFER == BUFFER2){
+					FULL2 = 1;
+				}
+				
+				/* set new WRITEBUFFER*/
+				if(!FULL1){
+						WRITEBUFFER = BUFFER1;
+				}
+				else if(!FULL2){
+						WRITEBUFFER = BUFFER2;
+				}else{
+						/* Error if Both Buffers are occupied -> timing Issue*/
+						HAL_GPIO_WritePin(Error_LED_1_GPIO_Port, Error_LED_1_Pin, GPIO_PIN_SET);
+				}
+				buff_i = 0;
+				adc_data_count = 0;
+				
+			}
+			
+		}
+		
+		
 	if(hspi == &hspi2){
-		HAL_GPIO_WritePin(SPI2_NCS1_GPIO_Port, SPI2_NCS1_Pin, GPIO_PIN_SET);
+//		HAL_GPIO_WritePin(SPI2_NCS1_GPIO_Port, SPI2_NCS1_Pin, GPIO_PIN_SET);
 	}
 }
 
@@ -490,11 +849,104 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 			case N_DRDY_2_Pin:
 				ADS1299_WriteRegister(GPIO, 0xF0);
 				break;
+			case Button_Pin:
+				 buttonTask();
+				break;
 			default:
 				break;
 		}
 }
 
+void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim){ 
+	HAL_GPIO_TogglePin(SPI_Rx_LED_GPIO_Port, SPI_Rx_LED_Pin);
+}
+
+
+
+/**
+* @brief  write data to the file
+* @param  filename
+* @param  data
+* @return status int16_t: bytes_written < 0, FRESULT >=0
+*/
+int16_t FS_FILE_Write(char *data) {
+	FRESULT res;
+	
+	uint16_t bytes_written;
+ 
+	// 2. write data to file
+	// res = f_write(&myFile, data, strlen(data), (void *)&bytes_written);
+	bytes_written = f_puts(data, &myFile);
+	
+	// 5. return status: bytes_written < 0, FRESULT >=0
+	return -1 * bytes_written;
+}
+ 
+ 
+/**
+* @brief  mount uSD card
+* @return FRESULT
+*/
+FRESULT sd_mount(void) {
+	FRESULT res = f_mount(&SDFatFs, SDPath, 1);
+	//HAL_Delay(10);
+	return res;
+}
+ 
+ 
+/**
+* @brief  unmount uSD card
+* @return FRESULT
+*/
+FRESULT sd_unmount(void) {
+	return f_mount(0, SDPath, 0);
+}
+
+void buttonTask(void){
+	
+	/* Software debounce*/
+	HAL_Delay(10);
+	if(!HAL_GPIO_ReadPin(Button_GPIO_Port,  Button_Pin)) return;
+	
+	/* if not running start run*/
+	if(!RUN){
+		/* initialize a run*/
+		MOUNT = 1;
+		RUN = 1;
+		
+		/* reset time*/
+		stime.Hours = 0;
+		stime.Minutes = 0;
+		stime.Seconds = 0;
+		stime.SubSeconds = 0;
+		HAL_RTC_SetTime(&hrtc, &stime, RTC_FORMAT_BCD);
+		
+		/* re-init writing variables*/
+		WRITEBUFFER = BUFFER1;
+		buff_i = 0;
+		adc_data_count = 0;
+		
+		/* mark running*/
+		HAL_GPIO_WritePin(SPI_Rx_LED_GPIO_Port, SPI_Rx_LED_Pin, GPIO_PIN_SET);
+		
+		return;
+	}
+	
+	
+	/* If running, stop run*/
+	if(RUN){
+		RUN = 0;
+		DEMOUNT = 1;
+		
+		/* RESET Error*/
+  	HAL_GPIO_WritePin(Error_LED_1_GPIO_Port, Error_LED_1_Pin, GPIO_PIN_RESET);
+		
+		/* Mark Not Running*/
+		HAL_GPIO_WritePin(SPI_Rx_LED_GPIO_Port, SPI_Rx_LED_Pin, GPIO_PIN_RESET);
+		return;
+	}
+	
+}
 /* USER CODE END 4 */
 
 /**

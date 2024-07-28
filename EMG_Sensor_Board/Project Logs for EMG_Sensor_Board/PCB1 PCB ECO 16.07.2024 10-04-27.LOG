@@ -1,0 +1,13 @@
+Change component parameters: Designator = "B1" ("B1"); Footprint = "ESDA6V1P6"; UniqueID = "\OCZZNDNA" ("\OCZZNDNA")
+Change component parameters (AddParameter): Name = "Arrow Part Number"; Value = "ESDA6V1P6"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Arrow Price/Stock"; Value = "https://www.arrow.com/en/products/esda6v1p6/stmicroelectronics?region=nac"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Datasheet Link"; Value = "https://www.st.com/resource/en/datasheet/esda14v2bp6.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Geometry.Height"; Value = "0.62mm"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer_Name"; Value = "STMicroelectronics"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer_Part_Number"; Value = "ESDA6V1P6"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser Part Number"; Value = "511-ESDA6V1P6"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/STMicroelectronics/ESDA6V1P6?qs=ewe0KQ%2FSs5H0%252BSAub%2FR2ag%3D%3D"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier 1"; Value = "Mouser"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier Part Number 1"; Value = "511-ESDA6V1P6"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=AGND Pin=D4-1
+Added Pin To Net: NetName=GND Pin=U3-69

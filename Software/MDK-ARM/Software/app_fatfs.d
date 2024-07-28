@@ -40,10 +40,14 @@ software/app_fatfs.o: ..\FATFS\App\app_fatfs.c ..\FATFS\App\app_fatfs.h \
   ..\Drivers\STM32WBxx_HAL_Driver\Inc\stm32wbxx_ll_bus.h \
   ..\Drivers\STM32WBxx_HAL_Driver\Inc\stm32wbxx_hal_rcc_ex.h \
   ..\Drivers\STM32WBxx_HAL_Driver\Inc\stm32wbxx_ll_crs.h \
+  ..\Drivers\STM32WBxx_HAL_Driver\Inc\stm32wbxx_hal_rtc.h \
+  ..\Drivers\STM32WBxx_HAL_Driver\Inc\stm32wbxx_hal_rtc_ex.h \
   ..\Drivers\STM32WBxx_HAL_Driver\Inc\stm32wbxx_hal_spi.h \
   ..\Drivers\STM32WBxx_HAL_Driver\Inc\stm32wbxx_hal_spi_ex.h \
+  ..\Drivers\STM32WBxx_HAL_Driver\Inc\stm32wbxx_hal_tim.h \
+  ..\Drivers\STM32WBxx_HAL_Driver\Inc\stm32wbxx_hal_tim_ex.h \
   ..\Drivers\STM32WBxx_HAL_Driver\Inc\stm32wbxx_ll_system.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
   ..\Middlewares\Third_Party\FatFs\src\ff_gen_drv.h \
   ..\Middlewares\Third_Party\FatFs\src\diskio.h \
-  ..\FATFS\Target\user_diskio.h
+  ..\FATFS\Target\sd_diskio.h ..\FATFS\App\stm32_adafruit_sd.h

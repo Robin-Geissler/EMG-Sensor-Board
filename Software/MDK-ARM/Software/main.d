@@ -37,8 +37,12 @@ software/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Drivers\STM32WBxx_HAL_Driver\Inc\stm32wbxx_ll_bus.h \
   ..\Drivers\STM32WBxx_HAL_Driver\Inc\stm32wbxx_hal_rcc_ex.h \
   ..\Drivers\STM32WBxx_HAL_Driver\Inc\stm32wbxx_ll_crs.h \
+  ..\Drivers\STM32WBxx_HAL_Driver\Inc\stm32wbxx_hal_rtc.h \
+  ..\Drivers\STM32WBxx_HAL_Driver\Inc\stm32wbxx_hal_rtc_ex.h \
   ..\Drivers\STM32WBxx_HAL_Driver\Inc\stm32wbxx_hal_spi.h \
   ..\Drivers\STM32WBxx_HAL_Driver\Inc\stm32wbxx_hal_spi_ex.h \
+  ..\Drivers\STM32WBxx_HAL_Driver\Inc\stm32wbxx_hal_tim.h \
+  ..\Drivers\STM32WBxx_HAL_Driver\Inc\stm32wbxx_hal_tim_ex.h \
   ..\Drivers\STM32WBxx_HAL_Driver\Inc\stm32wbxx_ll_system.h \
   ..\FATFS\App\app_fatfs.h ..\Middlewares\Third_Party\FatFs\src\ff.h \
   ..\Middlewares\Third_Party\FatFs\src\integer.h \
@@ -46,7 +50,8 @@ software/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
   ..\Middlewares\Third_Party\FatFs\src\ff_gen_drv.h \
   ..\Middlewares\Third_Party\FatFs\src\diskio.h \
-  ..\FATFS\Target\user_diskio.h ..\USB_Device\App\usb_device.h \
+  ..\FATFS\Target\sd_diskio.h ..\FATFS\App\stm32_adafruit_sd.h \
+  ..\USB_Device\App\usb_device.h \
   ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_def.h \
   ..\USB_Device\Target\usbd_conf.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \

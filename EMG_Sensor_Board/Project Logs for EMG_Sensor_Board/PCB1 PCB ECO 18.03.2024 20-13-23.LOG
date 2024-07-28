@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=SPI2_NCS1 Pin=B6-1
+Removed Pin From Net: NetName=SPI2_MISO Pin=B6-4
+Removed Pin From Net: NetName=SPI2_SCK Pin=B6-6
+Added Pin To Net: NetName=SPI2_SCK Pin=B6-1
+Added Pin To Net: NetName=SPI2_NCS1 Pin=B6-4
+Added Pin To Net: NetName=SPI2_MISO Pin=B6-6

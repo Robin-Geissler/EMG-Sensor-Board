@@ -1,0 +1,4 @@
+Change Net Name : Old Net Name=SPI2_CLK New Net Name=SPI2_SCK
+Add Net: Net with name "SPI2_MISO" already exists
+Add Net: Net with name "SPI2_MOSI" already exists
+Add Net: Net with name "SPI2_NCS1" already exists

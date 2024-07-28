@@ -1,0 +1,8 @@
+Added Pin To Net: NetName=SPI2_NCS1 Pin=B6-1
+Added Pin To Net: NetName=SPI2_MOSI Pin=B6-3
+Added Pin To Net: NetName=SPI2_MISO Pin=B6-4
+Added Pin To Net: NetName=SPI2_SCK Pin=B6-6
+Added Pin To Net: NetName=SPI2_SCK Pin=J12-1
+Added Pin To Net: NetName=SPI2_NCS1 Pin=J12-2
+Added Pin To Net: NetName=SPI2_MOSI Pin=J12-3
+Added Pin To Net: NetName=SPI2_MISO Pin=J12-4

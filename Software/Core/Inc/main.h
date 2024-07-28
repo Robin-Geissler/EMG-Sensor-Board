@@ -72,6 +72,9 @@ void Error_Handler(void);
 #define RF_Tx_LED_GPIO_Port GPIOA
 #define RF_Rx_LED_Pin GPIO_PIN_4
 #define RF_Rx_LED_GPIO_Port GPIOA
+#define Button_Pin GPIO_PIN_5
+#define Button_GPIO_Port GPIOA
+#define Button_EXTI_IRQn EXTI9_5_IRQn
 #define SPI_Tx_LED_Pin GPIO_PIN_10
 #define SPI_Tx_LED_GPIO_Port GPIOB
 #define SPI_Rx_LED_Pin GPIO_PIN_11

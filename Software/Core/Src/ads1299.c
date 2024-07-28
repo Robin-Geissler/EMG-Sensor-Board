@@ -95,6 +95,8 @@ void ADS1299_Init(SPI_HandleTypeDef *hspi, GPIO_TypeDef *spi_ncs_port, uint16_t 
 		/* Activate internal reference and wait to settle */
 		//ADS1299_WriteRegister(CONFIG3, 0xE0);
 		ADS1299_WriteRegister(CONFIG3, 0xFC);
+		
+
 		HAL_Delay(100);
 		
 		/* Single-shot-mode*/
@@ -115,18 +117,20 @@ void ADS1299_Init(SPI_HandleTypeDef *hspi, GPIO_TypeDef *spi_ncs_port, uint16_t 
 		ADS1299_WriteRegister(CH8SET, 0x05);
 		*/
 		
+		ADS1299_WriteRegister(CONFIG2, 0xD0);
+		
 		/* Configure for measurement */
 		ADS1299_WriteRegister(CONFIG1, 0xF4);
-		ADS1299_WriteRegister(CONFIG2, 0xC4);
+		//ADS1299_WriteRegister(CONFIG2, 0xC4);
 		HAL_Delay(100);
 		ADS1299_WriteRegister(CH1SET, 0x60);
 		ADS1299_WriteRegister(CH2SET, 0x60);
 		ADS1299_WriteRegister(CH3SET, 0x60);
-		ADS1299_WriteRegister(CH4SET, 0x62);
-		ADS1299_WriteRegister(CH5SET, 0x00);
-		ADS1299_WriteRegister(CH6SET, 0x00);
-		ADS1299_WriteRegister(CH7SET, 0x00);
-		ADS1299_WriteRegister(CH8SET, 0x00);
+		ADS1299_WriteRegister(CH4SET, 0x60);
+		ADS1299_WriteRegister(CH5SET, 0x60);
+		ADS1299_WriteRegister(CH6SET, 0x60);
+		ADS1299_WriteRegister(CH7SET, 0x60);
+		ADS1299_WriteRegister(CH8SET, 0x60);
 		
 		ADS1299_WriteRegister(BIAS_SENSP, 0x01);
 		ADS1299_WriteRegister(BIAS_SENSN, 0x01);
