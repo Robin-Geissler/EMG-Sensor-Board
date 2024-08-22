@@ -60,7 +60,6 @@ TIM_HandleTypeDef htim2;
 /* USER CODE BEGIN PV */
 uint8_t *dataReading;
 int32_t dataProcessed[8];
-int32_t adc_offset = 0;
 char adc_data_str_buff1[60000];
 char adc_data_str_buff2[60000];
 char adc_data_str[200];
@@ -154,12 +153,8 @@ int main(void)
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
 	
+	/* Init SD Card*/
 	BSP_SD_Init();
-	/* USB Initialization */
-	// Use the hal_pcd library to init the usb (probably already done...)
-	// read the instructions first.
-//	hpcd_USB_FS.pData = usbData;
-//	HAL_PCD_Start(&hpcd_USB_FS);
 	
 	/* Enable Timer for LEDs */
 	HAL_TIM_OC_Start(&htim1, 1);
@@ -170,15 +165,7 @@ int main(void)
   
 	/* activate conversion */
 	HAL_GPIO_WritePin(START_GPIO_Port, START_Pin, GPIO_PIN_SET);
-	
-	/* read data continousely*/
-//	ADS1299_RDATAC();
-
-	/* Calibrate ADC */
 	HAL_Delay(100);
-	/* Set Offset */
-	adc_offset = dataProcessed[0];
-
 	
 	
 	
@@ -188,60 +175,74 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {		
+			/* SD-Card Writing was activated by button push */
 			if(MOUNT){
-				 /* Init Write file*/
-				// Check if SD card is mount
+				/* Init Write file */
+				/* Mount SD Card */
 				res = sd_mount();
+				/* Check if mounting was successfull */
 				if(res != FR_OK) {
 					HAL_GPIO_WritePin(Error_LED_1_GPIO_Port, Error_LED_1_Pin, GPIO_PIN_SET);
-					
 				}
 				
-				// try to open file in append and write mode
+				/* Open file in append and write mode */
 				res = f_open(&myFile, log_file, FA_OPEN_APPEND | FA_WRITE);
+				/* Check if file opening was successfull */
 				if(res != FR_OK) {
 					HAL_GPIO_WritePin(Error_LED_1_GPIO_Port, Error_LED_1_Pin, GPIO_PIN_SET);
 					sd_unmount();
 				}
 				
-				/* Mount successfull, deactivate FLAG*/
+				/* Mount was successfull, deactivate MOUNT Flag */
 				MOUNT = 0;
+				
+				/* Write header line to file */
 				FS_FILE_Write("timestamp;value1;value2;value3;value4;value5;value6;value7;value8\n");
 			}
-		
+			
+			/* SD Card Writing is active */
 			if(RUN){
+				/*
+				 * Write one of the two write buffers to the sd card. One of the two FULL
+				 * Flags is set at any time, the other one is false. The full buffer is
+				 * written to the sd-card. The other buffer is filled with new measurement
+				 * data at the same time by an interrrupt with higher priority (HAL_SPI_TxRxCpltCallback).
+				 */
 				if(FULL1){
 				/* Mark start write */
 				HAL_GPIO_WritePin(SPI_Tx_LED_GPIO_Port, SPI_Tx_LED_Pin, GPIO_PIN_SET);
+				/* Write SD Card */
 				FS_FILE_Write(adc_data_str_buff1);
+				/* Empty data buffer */
 				strncpy(adc_data_str_buff1, "",1);
+				/* Mark buffer as emptied */
 				FULL1 = 0;
-				/* Mark end write */
+				/* Mark write finished */
 				HAL_GPIO_WritePin(SPI_Tx_LED_GPIO_Port, SPI_Tx_LED_Pin, GPIO_PIN_RESET);
 				}
 				if(FULL2){
-				/* Mark end write */
+				/* Mark start write */
   			HAL_GPIO_WritePin(SPI_Tx_LED_GPIO_Port,  SPI_Tx_LED_Pin, GPIO_PIN_SET);
+				/* Write SD Card */
 				FS_FILE_Write(adc_data_str_buff2);
+				/* Empty data buffer */
 				strncpy(adc_data_str_buff2, "",1);
+				/* Mark buffer as emptied */
 				FULL2 = 0;
-					/* Mark end write */
+				/* Mark write finished */
 				HAL_GPIO_WritePin(SPI_Tx_LED_GPIO_Port, SPI_Tx_LED_Pin, GPIO_PIN_RESET);
 				}
 			}
 			
+			/* SD-Card Writing was deactivated by button push */
 			if(DEMOUNT){
-				/* close file */
+				/* Close write file */
 				res = f_close(&myFile);
-	
 				/* Unmount SD Card*/
 				res = sd_unmount();
-				
-				/* DEMOUNT successfull, deactivate FLAG */
+				/* DEMOUNT was successfull, deactivate DEMOUNT Flag */
 				DEMOUNT = 0;
 			}
-		
-//				CDC_Transmit_FS((uint8_t*)"hi", 2);
 		
     /* USER CODE END WHILE */
 
@@ -759,75 +760,83 @@ void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi){
  * SPI TxRxCplt Callback
  */
 void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi){
-		if(hspi == &hspi1){
+	/* Measurement data was read*/	
+	if(hspi == &hspi1){
 			
+		/* Deactivat SPI CS Pins */	
+		HAL_GPIO_WritePin(SPI1_NCS1_GPIO_Port, SPI1_NCS1_Pin, GPIO_PIN_SET); // Pin 1
+//	HAL_GPIO_WritePin(SPI1_NCS2_GPIO_Port, SPI1_NCS2_Pin, GPIO_PIN_SET); // Pin 2
+			
+		/* Convert ADS1299 data format to uint32_t */
+		ADS1299_Convert_Data(dataReading,dataProcessed);
+		/* Send measurement data over USB interface for live plotting */
+		CDC_Transmit_FS((uint8_t*)dataProcessed,32);
 
-			HAL_GPIO_WritePin(SPI1_NCS1_GPIO_Port, SPI1_NCS1_Pin, GPIO_PIN_SET);
-//			HAL_GPIO_WritePin(SPI1_NCS2_GPIO_Port, SPI1_NCS2_Pin, GPIO_PIN_SET);
-			ADS1299_Convert_Data(dataReading,dataProcessed);
-			CDC_Transmit_FS((uint8_t*)dataProcessed,32);
-
+		/* If active running is deactivated data is not saved */
+		if(!RUN){
+			return;
+		}
+		
+		/* Create a timestamp */
+		HAL_RTC_GetTime(&hrtc, &stime, RTC_FORMAT_BCD);
+		HAL_RTC_GetDate(&hrtc, &sdate,RTC_FORMAT_BCD);
+		
+		
+		/* Write into Buffer. Write either Buffer 1 or Buffer 2*/	
+		/* Write to Buffer 1 */
+		if(WRITEBUFFER == BUFFER1){
+			/* Create formatstring in CSV data format */
+			sprintf(adc_data_str_buff1 + buff_i,"%x-%x-%x-%03d;%d;%d;%d;%d;%d;%d;%d;%d \n", stime.Hours, stime.Minutes, stime.Seconds, 999 - (stime.SubSeconds * 1000 / 1024), dataProcessed[0],dataProcessed[1],dataProcessed[2],dataProcessed[3],dataProcessed[4],dataProcessed[5],dataProcessed[6],dataProcessed[7]);
 			
-			/* if not active running data dosent need to be saved*/
-			if(!RUN){
-				return;
-			}
-			
-			HAL_RTC_GetTime(&hrtc, &stime, RTC_FORMAT_BCD);
-			HAL_RTC_GetDate(&hrtc, &sdate,RTC_FORMAT_BCD);
-			
-			
-			/* Write into Buffer. Write either Buffer 1 or Buffer 2*/	
-			/* Write to Buffer 1 */
-			if(WRITEBUFFER == BUFFER1){
-				sprintf(adc_data_str_buff1 + buff_i,"%x-%x-%x-%03d;%d;%d;%d;%d;%d;%d;%d;%d \n", stime.Hours, stime.Minutes, stime.Seconds, 999 - (stime.SubSeconds * 1000 / 1024), dataProcessed[0],dataProcessed[1],dataProcessed[2],dataProcessed[3],dataProcessed[4],dataProcessed[5],dataProcessed[6],dataProcessed[7]);
-				do{
-					buff_i++;
-				}while(adc_data_str_buff1[buff_i] != NULL);
-			}
-			
-			
-			/* Write to Buffer 2 */
-			if(WRITEBUFFER == BUFFER2){
-			sprintf(adc_data_str_buff2 + buff_i,"%x-%x-%x-%03d;%d;%d;%d;%d;%d;%d;%d;%d \n", stime.Hours, stime.Minutes, stime.Seconds, 999 - (stime.SubSeconds * 1000 / 1024), dataProcessed[0],dataProcessed[1],dataProcessed[2],dataProcessed[3],dataProcessed[4],dataProcessed[5],dataProcessed[6],dataProcessed[7]);
 			do{
 				buff_i++;
-			}while(adc_data_str_buff2[buff_i] != NULL);
-			}
-			
-			adc_data_count++;
-			
-	
-			/* if a Buffer is Full (300 Values) switch the Buffer*/
-			if(adc_data_count >= 300){
-				/* Mark current Buffer as FULL*/
-				if(WRITEBUFFER == BUFFER1){
-					FULL1 = 1;
-				}
-				if(WRITEBUFFER == BUFFER2){
-					FULL2 = 1;
-				}
-				
-				/* set new WRITEBUFFER*/
-				if(!FULL1){
-						WRITEBUFFER = BUFFER1;
-				}
-				else if(!FULL2){
-						WRITEBUFFER = BUFFER2;
-				}else{
-						/* Error if Both Buffers are occupied -> timing Issue*/
-						HAL_GPIO_WritePin(Error_LED_1_GPIO_Port, Error_LED_1_Pin, GPIO_PIN_SET);
-				}
-				buff_i = 0;
-				adc_data_count = 0;
-				
-			}
-			
+			}while(adc_data_str_buff1[buff_i] != NULL);
 		}
 		
 		
+		/* Write to Buffer 2 */
+		if(WRITEBUFFER == BUFFER2){
+			sprintf(adc_data_str_buff2 + buff_i,"%x-%x-%x-%03d;%d;%d;%d;%d;%d;%d;%d;%d \n", stime.Hours, stime.Minutes, stime.Seconds, 999 - (stime.SubSeconds * 1000 / 1024), dataProcessed[0],dataProcessed[1],dataProcessed[2],dataProcessed[3],dataProcessed[4],dataProcessed[5],dataProcessed[6],dataProcessed[7]);
+			/* set buff_i to the end of the buffer */
+			do{
+				buff_i++;
+			}while(adc_data_str_buff2[buff_i] != NULL);
+		}
+		
+		/* increase data counter */
+		adc_data_count++;
+		
+
+		/* if a buffer is full (300 values) switch the buffer*/
+		if(adc_data_count >= 300){
+			/* Mark current buffer as FULL*/
+			if(WRITEBUFFER == BUFFER1){
+				FULL1 = 1;
+			}
+			if(WRITEBUFFER == BUFFER2){
+				FULL2 = 1;
+			}
+			
+			/* Set new WRITEBUFFER*/
+			if(!FULL1){
+					WRITEBUFFER = BUFFER1;
+			}
+			else if(!FULL2){
+					WRITEBUFFER = BUFFER2;
+			}else{
+					/* Error if Both Buffers are occupied -> timing Issue*/
+					HAL_GPIO_WritePin(Error_LED_1_GPIO_Port, Error_LED_1_Pin, GPIO_PIN_SET);
+			}
+			/* Reset buffer end point */
+			buff_i = 0;
+			/* Reset data counter */
+			adc_data_count = 0;
+		}
+	}
+	
+	/* SPI 2 was Read */
 	if(hspi == &hspi2){
-//		HAL_GPIO_WritePin(SPI2_NCS1_GPIO_Port, SPI2_NCS1_Pin, GPIO_PIN_SET);
+			/*Implement here what should happen after spi2 read*/
 	}
 }
 

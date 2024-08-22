@@ -102,20 +102,6 @@ void ADS1299_Init(SPI_HandleTypeDef *hspi, GPIO_TypeDef *spi_ncs_port, uint16_t 
 		/* Single-shot-mode*/
 		//ADS1299_WriteRegister(CONFIG4, 0x08);
 		
-		/* Configure for test */
-		/*
-		ADS1299_WriteRegister(CONFIG1, 0xF4);
-		ADS1299_WriteRegister(CONFIG2, 0xD0);
-		HAL_Delay(100);
-		ADS1299_WriteRegister(CH1SET, 0x05);
-		ADS1299_WriteRegister(CH2SET, 0x15);
-		ADS1299_WriteRegister(CH3SET, 0x25);
-		ADS1299_WriteRegister(CH4SET, 0x35);
-		ADS1299_WriteRegister(CH5SET, 0x45);
-		ADS1299_WriteRegister(CH6SET, 0x55);
-		ADS1299_WriteRegister(CH7SET, 0x65);
-		ADS1299_WriteRegister(CH8SET, 0x05);
-		*/
 		
 		ADS1299_WriteRegister(CONFIG2, 0xD0);
 		
