@@ -3,17 +3,9 @@ This is a multichannel Eelectro Myogram (EMG) sensor. The project provides hardw
 
 The system provides measurement functions for up to 16 differential EMG channels. It can be used to measurem 4x4 high density EMG grids, or 16 individual channels. The system can be operated mobile, receiving energy from a LiPo 1P1S battery and publishing the measurement data on an SD card.
 
-| System Data | Multichannel EMG |
-| ------ | ------ |
-| Channel Number | 16 |
-| Size | 53 x 97 x 12 mm^3 |
-| Weight | 35g |
-| Batter Operation Time | 2h for a 300 mAh Battery |
-| Measurement Amplitude | 2 uV - 10 mV |
-| Frequency Spectrum | 0 Hz - 200 Hz |
-| Sampling Rate | 1 kHz |
-| CMRR | 110 dB |
-| PSRR | 96 dB |
+A description of the system hardware can be found under: [Hardware](Hardware)
+A description of the system software can be found under: [Software](Software)
+
 
 ![Multichannel EMG PCB](Figures/PCB.svg "Multichannel EMG PCB")
 
