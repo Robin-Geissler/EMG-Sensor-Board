@@ -1,7 +1,7 @@
 # Multichannel EMG
 This is a multichannel Eelectro Myogram (EMG) sensor. The project provides hardware and driver software to conclude multichannel EMG measurements.
 
-![Multichannel EMG PCB](figures/PCB.svg "Multichannel EMG PCB")
+![Multichannel EMG PCB](Figures/PCB.svg "Multichannel EMG PCB")
 
 The system provides measurement functions for up to 16 differential EMG channels. It can be used to measurem 4x4 high density EMG grids, or 16 individual channels. The system hardware can be configured over pin header bridges.
 
