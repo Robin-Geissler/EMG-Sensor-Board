@@ -3,15 +3,15 @@ This is a multichannel Eelectro Myogram (EMG) sensor. The project provides hardw
 
 The system provides measurement functions for up to 16 differential EMG channels. It can be used to measurem 4x4 high density EMG grids, or 16 individual channels. The system can be operated mobile, receiving energy from a LiPo 1P1S battery and publishing the measurement data on an SD card.
 
-Further documentation can be found in the Wiki:
+**Further documentation can be found in the Wiki:**
 
 - A description of the system hardware can be found under: [Hardware](./../../wikis/Hardware)
 - A description of the system software can be found under: [Software](./../../wikis/Firmware)
 
-Projects related to this:
-- An audio jack electrode adapter can be fountd under: [Audio Jack Adapter](./../../../emg-sensor-electrode-adapter)
-- A live visualisation software can be fountd under: [Live Visualization](./../../../emg-evaluation-plotting)
-- A post measurement visualization software can be found under: [Post Measurement Visualization](./../../../emg-sensor-board-evaluation-plot)
+**Projects related to this:**
+- An audio jack electrode adapter can be fountd under: [Audio Jack Adapter](./../../../../emg-sensor-electrode-adapter)
+- A live visualisation software can be fountd under: [Live Visualization](./../../../../emg-evaluation-plotting)
+- A post measurement visualization software can be found under: [Post Measurement Visualization](./../../../../emg-sensor-board-evaluation-plot)
 
 ![Multichannel EMG PCB](Figures/PCB.svg "Multichannel EMG PCB")
 
