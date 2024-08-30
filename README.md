@@ -40,11 +40,18 @@ To conclude basic multichannel EMG measurents follow these steps:
 9. **Visualize the measurement data:** A visualization script like [this](./../../../emg-sensor-board-evaluation-plot) can be used to visualize the measurement data.
 
 ## Trouble Shooting
-
+Known mistakes and solutions:
+- LED L3 is lid up in red while conducting a measurement. This means there was an issue with writing to the CSV File. Data was no written at all, or part of the data is missing. The following causes are known:
+    1. You forgot to insert the SD card. Insert the SD card.
+    2. The battery SOC is too low, which caused the processor to reduce clock speed. This resulted in the data processing pipeline beeing to slow to process measurements in realtime. Recharge the battery.
+    3. A connector of the SD card holder is bent down and is not connecting to the SD card propperly. Bend it back.
+- The measurement seemd to work, but the plotting of the data does not work.
+    1. This happens if you conducted a measurement and there was already an existin LOG.csv file on the sd card. Or you conducted multiple measurements before plotting. All measurement runs are saved in the LOG.csv file know. Every measurement you conduct starts with the header line to be written. So you can search for the header lines in the csv file and separate the measurement data by hand, and distribute it into multiple files.
+    
 
 
 ## License
-For open source projects, say how it is licensed.
+
 
 ## Project status
 
