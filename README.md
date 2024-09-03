@@ -19,7 +19,7 @@ The system provides measurement functions for up to 16 differential EMG channels
 ## Hardware
 Anti aliasing first order lowpass filters are implemented for all channels. The measurement system uses two ADS1299 Analog Frontends (AFEs) for signal aquisistion. An STM32WB MCU is used for digital data processing. Data for live data visualization is published permanently over a USB 2.0 interface. Additionally measurement data can be stored on an on board SD card.
 
-![Architecture](Figures/Architecture.svg "Architecture")
+![Architecture](Figures/Electronics.svg "System Architecture")
 
 The system hardware can be configured over the pin header bridges B 1 to B 8.
 
