@@ -1,7 +1,7 @@
 # Multichannel EMG
 This is a multichannel Eelectro Myogram (EMG) sensor. The project provides hardware and driver software to conclude multichannel EMG measurements.
 
-The system provides measurement functions for up to 16 differential EMG channels. It can be used to measurem 4x4 high density EMG grids, or 16 individual channels. The system can be operated mobile, receiving energy from a LiPo 1P1S battery and publishing the measurement data on an SD card.
+The system provides measurement functions for up to 16 differential EMG channels. It can be used to measurem 4x4 high density EMG grids, or 16 individual channels. The system can be operated mobile, receiving energy from a LiPo 1P1S battery, publishing the measurement data on an SD card.
 
 **Further documentation can be found in the Wiki:**
 
@@ -15,6 +15,9 @@ The system provides measurement functions for up to 16 differential EMG channels
 
 ![Multichannel EMG PCB](Figures/PCB.svg "Multichannel EMG PCB")
 
+Measurement data can be visualized with the provided visuaization software:
+
+![Multichannel EMG Measurement](Figures/8_channel_measurement.pdf "Multichannel EMG PCB Measurement")
 
 ## Hardware
 Anti aliasing first order lowpass filters are implemented for all channels. The measurement system uses two ADS1299 Analog Frontends (AFEs) for signal aquisistion. An STM32WB MCU is used for digital data processing. Data for live data visualization is published permanently over a USB 2.0 interface. Additionally measurement data can be stored on an on board SD card.
@@ -23,8 +26,8 @@ Anti aliasing first order lowpass filters are implemented for all channels. The 
 
 The system hardware can be configured over the pin header bridges B 1 to B 8.
 
-## Data Processing
-Show your appreciation to those who have contributed to the project. 
+## Firmware
+The firmware is implemented on an STM32WB MCU. It performs a system configuration of the ADS 1299 ICs, runs a postprocessing pipeline, povides live data publishing over usb and saves measurement on an SD Card.
 
 ## Getting started with basic multichannel measurements
 To conclude basic multichannel EMG measurents follow these steps:
