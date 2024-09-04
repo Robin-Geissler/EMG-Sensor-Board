@@ -1,9 +1,0 @@
-EESchema-DOCLIB  Version 2.0
-#
-$CMP XC6210B502PR-G
-D LDO Voltage Regulators 700mA High Speed LDO Regulator
-K
-F https://www.torex.co.jp/file/xc6210/XC6210-j.pdf
-$ENDCMP
-#
-#End Doc Library
