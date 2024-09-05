@@ -1,0 +1,74 @@
+# Altium Designer project files
+*.PrjPcbStructure
+*.PrjPcbState
+*.PrjPCB_Bak.zip
+*.SchDocPreview
+*.PcbDocPreview
+*.PrjFpgStructure
+*.PrjFpgState
+*.OutJob
+*.Gbl
+*.GBO
+*.GBS
+*.GBL
+*.GKO
+*.DRL
+*.EXL
+*.GTS
+*.GTL
+*.GTO
+*.REP
+*.SOM
+*.SOS
+*.STC
+*.STO
+*.log
+
+# Output files
+/Output/**
+/Project Logs/**
+/Generated/**
+/Compiled Output/**
+/Simulation Models/**
+/Backup/**
+/Autosave/**
+*.DsnBib
+
+# Keil uVision project files
+*.bak
+*.uvoptx
+*.uvguix
+*.uvgui.*
+*.uvopt.*
+*.plg
+*.depend
+*.crf
+*.lst
+*.map
+*.hex
+*.bin
+*.sct
+*.axf
+*.uvproj.*
+*.uvopt.*
+*.htm
+*.uvx
+*.ini
+
+# Object and debug files
+*.o
+*.d
+*.elf
+*.axf
+
+# Backup files
+*.bak
+*.bck
+
+# IDE specific or temporary files
+*.log
+*.temp
+*.tmp
+*.swp
+*.swo
+*.swn
