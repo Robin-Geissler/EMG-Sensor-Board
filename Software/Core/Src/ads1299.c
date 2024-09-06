@@ -1,4 +1,21 @@
-// ADS1299.c
+/**
+  ******************************************************************************
+  * @file           : ads1299.c
+  * @brief          : ADS1299 driver
+  ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2024 Fraunhofer EMFT.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  *
+  ******************************************************************************
+  */
+
+
 #include "ads1299.h"
   
 SPI_HandleTypeDef *hspi_ads1299;
@@ -157,9 +174,9 @@ void ADS1299_Convert_Data(uint8_t *input, int32_t *output){
 
 	for(int i = 0; i < 8; i++){
 		/* data starts at 4 because first byte is send byte, byte 1,2,3 are status bytes*/
-		/* first bit is ingored due to Two´s compliment format*/
+		/* first bit is ingored due to Twoï¿½s compliment format*/
 		output[i] = ((input[4 + i*3] & 0x7F) << 16) | (input[4+ i*3 + 1] << 8) | (input[4 + i * 3 + 2]);
-		/* if first bit was set, substract Val Max to get the right 2´s compliment value*/
+		/* if first bit was set, substract Val Max to get the right 2ï¿½s compliment value*/
 		if(input[4 + i*3] >= 0x80){
 			output[i] = output[i] - 0x800000;
 			}
