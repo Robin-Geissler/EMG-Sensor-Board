@@ -1,4 +1,23 @@
-// ADS1299.h
+/* USER CODE BEGIN Header */
+/**
+  ******************************************************************************
+  * @file           : ads1299.h
+  * @brief          : Header for ads1299.c file.
+  *                   This file contains the common defines of the application.
+  ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2024 Fraunhofer EMFT.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  *
+  ******************************************************************************
+  */
+
+
 #ifndef ADS1299_H
 #define ADS1299_H
  
