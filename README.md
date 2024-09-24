@@ -17,7 +17,7 @@ The system provides measurement functions for up to 16 differential EMG channels
 
 Measurement data can be visualized with the provided visuaization software:
 
-![Multichannel EMG Measurement](Figures/8_channel_measurement.PNG "Multichannel EMG PCB Measurement")
+![Multichannel EMG Measurement](Figures/plot.PNG "Multichannel EMG PCB Measurement")
 
 ## Hardware
 Anti aliasing first order lowpass filters are implemented for all channels. The measurement system uses two ADS1299 Analog Frontends (AFEs) for signal aquisistion. An STM32WB MCU is used for digital data processing. Data for live data visualization is published permanently over a USB 2.0 interface. Additionally measurement data can be stored on an on board SD card.
