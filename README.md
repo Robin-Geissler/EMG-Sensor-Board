@@ -40,7 +40,7 @@ To conclude basic multichannel EMG measurents follow these steps:
 6. **Start a measurement:** Press the button to start a measurement. LED L1 will light up if the measurement was started. Measurement data will be conducted on all available channels and saved on the SD card.
 7. **Finish a measurement:** Press the button again to finish a measurement. LED L1 will power down. Disconnecto all power supplies (USB and battery).
 8. **Extract the measurement data:** Remove the SD card from the SD card slot and read it on a PC. The measurement data is saved in the file LOG.csv.
-9. **Visualize the measurement data:** A visualization script like [this](./../../../emg-sensor-board-evaluation-plot) can be used to visualize the measurement data.
+9. **Visualize the measurement data:** A visualization script like [this](https://github.com/Robin-Geissler/EMG-Sensor-Plot) can be used to visualize the measurement data.
 
 ## Trouble Shooting
 Known mistakes and solutions:
