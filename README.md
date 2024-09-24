@@ -5,13 +5,13 @@ The system provides measurement functions for up to 16 differential EMG channels
 
 **Further documentation can be found in the Wiki:**
 
-- A description of the system hardware can be found under: [Hardware](./../../wikis/Hardware)
-- A description of the system software can be found under: [Software](./../../wikis/Firmware)
+- A description of the system hardware can be found under: [EMG Sensor Hardware Wiki](https://github.com/Robin-Geissler/EMG-Sensor-Board/wiki/EMG-Sensor-Hardware)
+- A description of the system firmware can be found under: [EMG Sensor Firmware Wiki](https://github.com/Robin-Geissler/EMG-Sensor-Board/wiki/EMG-Sensor-Firmware)
 
 **Projects related to this:**
-- An audio jack electrode adapter can be fountd under: [Audio Jack Adapter](./../../../../emg-sensor-electrode-adapter)
-- A live visualisation software can be fountd under: [Live Visualization](./../../../../emg-evaluation-plotting)
-- A post measurement visualization software can be found under: [Post Measurement Visualization](./../../../../emg-sensor-board-evaluation-plot)
+- An audio jack electrode adapter can be fountd under: [Audio Jack Adapter](https://github.com/Robin-Geissler/EMG-Sensor-Electrode-Adapter)  
+- A live visualisation software can be fountd under: [Live Visualization](https://github.com/Robin-Geissler/EMG-Sensor-Live-Plot)
+- A post measurement visualization software can be found under: [Post Measurement Visualization](https://github.com/Robin-Geissler/EMG-Sensor-Plot)
 
 ![Multichannel EMG PCB](Figures/PCB.svg "Multichannel EMG PCB")
 
